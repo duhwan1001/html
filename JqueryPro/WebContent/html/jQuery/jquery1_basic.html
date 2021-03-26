@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>JQuery basic</title>
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script type="text/javascript">
+			//document.getElementById();
+			$(document).ready(function(){
+				alert(1);
+			});
+		</script>
+	</head>
+	<body>
+		<h1>JQuery 테스트</h1>
+	</body>
+	<script>
+		var list = document.getElementsByTagName("h1");
+		list[0].style.backgroundColor = "yellow";
+		list[0].style.color = "blue";
+		
+		//$('h1') // document.getElementsByTagName("h1");
+		var obj = $('h1');
+		//obj.css("key", "value");
+		obj.css("background-color", "gray");
+		obj.css("color", "white");
+		
+		//메소드 체이닝
+		obj.css("background-color", "gray").css("color", "white");
+		
+		$(function(){
+			alert(2);
+		})
+	</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

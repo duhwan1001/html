@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script>
+			function sendUserInfo() {
+				//validate 로직
+/* 				var result = validate();
+				if(!result) return; */
+				
+				if(!validate()) return;
+				
+				//사용자에게 전송 여부 확인
+				
+				if(!confirm("전송하시겠습니까?")) return;
+				
+								
+			}
+			
+			function isEmpty(str) {
+				//빈 값인 경우
+				if(str == null || str.trim().length) return false;
+				//빈 값이 아닌 경우
+				return true;
+			}
+			
+			function hasBlank(str){
+				return str.match(" ");
+			}
+			
+			function checkLength(str, min, max){
+				
+				if(min == null && max == null) {// 최소 최대 둘다 존재하지 않는 경우
+					
+					return false;
+				
+				} else if(min == null) {
+					
+					if(str.length > max) return false; // 최대값만 존재하는 경우
+						
+				} else if(max == null) {
+					
+					if(str.length < min) return false; // 최소값만 존재하는 경우
+						
+				} else { // 최소값, 최대값이 둘 다 존재하는 경우 (max != null || min != null)
+				
+					if(str.length < min && str.length > max) return false;
+				
+				}
+				
+				return true;
+			}
+			
+			function checkRegExp(str, regExp) {
+				return str.match(regExp)
+			}
+			
+			function validate() {
+				//아이디 검사 -- 빈값체크/공백체크/길이체크/형식체크
+				//오류 아이디 포커스, 메시지
+				var ele, val;
+				var min, max;
+				
+				ele = document.getElementById("userId");
+				val = ele.value;
+				min = 5;
+				max = 10;
+				
+				//빈값체크
+				if(isEmpty(val)) {
+					alert("아이디는 필수 입력입니다.");
+					ele.focus();
+					return false;
+				}
+				
+				//공백체크
+				if(hasBlank(val)) { // regExp = regularExpression
+					alert("아이디에 빈 칸은 입력하실 수 없습니다");
+					ele.focus();
+					return false;
+				}
+				
+				//길이체크
+				if(!checkLength(val, min, max)){
+					alert("아이디는 " + min + "글자 이상, " + max + "글자 이하이어야 합니다.")
+					ele.focus;
+					return false;
+				}
+				
+				//형식체크
+				//reg.exp = /[a-z][0-9a-z]*/;
+				if(checkRegExp(val, /^[a-z][0-9a-z]*&/)) {
+					alert("아이디 형식이 잘못 되었습니다.");
+					ele.focus();
+					return false;
+				}
+				
+				return true; // 문제가 없다면 true를 리턴한다.
+				
+				//비밀번호 검사
+				
+				//이름
+				
+				//생년월일
+				
+				//휴대폰
+				
+				//이메일
+			}
+		</script>
+	</head>
+	<body>
+		<form>
+			아이디 : <input type="text" id="userId" title="아이디"><br>
+			비밀번호 : <input type="password" id="userPw" title="비밀번호"><br>
+			이름 : <input type="text" id="userName" title="이름"> <br>
+			생년월일 : <input type="text" id="BirthDay" title="생년월일"><br>
+			휴대폰 : <input type="text" id="hpNo" title="휴대폰"><br>
+			이메일 : <input type="text" id="email" title="이메일"><br>
+			<br>
+			<button type="button" onclick="sendUserInfo()">전송1</button>
+			<button type="submit">submit</button>
+			<button type="reset">취소</button>
+		</form>
+	</body>
+</html>

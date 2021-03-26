@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			* {
+				border-radius:50px; 
+			}
+			body{
+				margin: 0px;
+			}
+			header {
+				background-color: pink;
+				height: 80px;
+				text-align: center;
+				line-height: 80px;
+			}
+			
+			header h1 {
+				margin: 0px;
+			}
+			
+			nav {
+				background-color: gray;
+				float: left;
+				width: calc(30% - 10px);
+				height: 600px;
+				padding-left: 10px;
+			}
+			
+			nav h2 {
+				margin: 0px;
+			}
+			
+			section {
+				background-color: yellow;
+				float: right; 
+				width: 70%;
+				height: 600px;
+			}
+			
+			footer {
+				background-color: navy;
+				color: white;
+				clear: both;
+				text-align: center;
+				line-height: 40px;
+			}
+			
+			footer p {
+				margin: 0px;
+			}
+			
+			nav, section {
+				height: calc(100vh - 120px);
+			}
+			
+			h3 {
+				margin: 0px;
+			}
+			
+			article {
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body style="margin: 0px;">
+		<!-- 머리글 -->
+		<header>
+			<h1>My Blog Page</h1>
+		</header>
+		<!-- 네비 -->
+		<nav>
+			<h2>Links</h2>
+			<ul>
+				<li><a href="http://google.com">W3C</a></li>
+				<li><a href="http://google.com">MOZILLA</a></li>
+				<li><a href="http://google.com">HTML</a></li>
+			</ul>
+			<img alt="홍길동" src="../../images/fff.png" style="width: 100%">
+			<p>홍길동</p>
+		</nav>
+		<!-- 본문 -->
+		<section>
+			<!-- 시맨틱태그 -->
+			<article>
+				<h3>Semantic Tags</h3>
+				<p>시맨틱 요소들은 브라우저에게 요소의 의미나 목적을 명확하게 알려주는 요소이다.</p>
+			</article>
+			<!-- div 내용 -->
+			<article>
+				<h3>Semantic Tags</h3>
+				<p>시맨틱 요소들은 브라우저에게 요소의 의미나 목적을 명확하게 알려주는 요소이다.</p>
+			</article>
+		</section>
+		<!-- 바닥글 -->
+		<footer>
+			Copyright (c) 2021 Hong
+		</footer>
+	
+	</body>
+</html>

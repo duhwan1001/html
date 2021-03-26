@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>string</title>
+		<script type="text/javascript">
+			var str ="독도는 인도땅";
+			var eng ="abcdEFGHI";
+			document.write(str + "이라는 말도 안 되는 소리를 바꿔줍니다.<br>");
+			document.write(eng+"<br>");
+			str.replace("인도","티벳");
+			document.write(str); 
+			/*
+			str : "독도는 인도땅"
+			str.length : 7			
+			str.charAt(2) : "는"			
+			str.indexOf("인") : 4			
+			str.search("인도") : 4			
+			str.replace("인도","티벳") : "독도는 티벳땅" (str자동저장X)			
+			str.replaceAll("는","는!!") : "독도는!! 인도땅" ( str자동저장X)
+			*/
+			
+		</script>
+		
+		<script>
+			s = "One, Two, Three, Four, Five";
+			array = s.split(',');
+			for(i=0; i<array.length; i++){
+				document.writeln(i+ '-' + array[i]);
+			}
+			document.writeln("<br>");
+			
+			var str2 = "이휘로,전윤주,김현슬,김두환,최영준";
+			document.write(str2 + "<br>");
+			
+			var arr2 = str2.split(","); // split 사용시 배열로 리턴함
+			//["이휘로", " 전윤주", " 김현슬", " 김두환", " 최영준"]
+			document.write("split 결과 : " + arr2 + "<br>");
+			document.write("split 결과 arr 길이 : " + arr2.length + "<br>");
+			
+			for(var i=0; i<arr2.length; i++){
+				document.write(i + ")" + arr2[i] + "님 안녕" + "<br>");
+			}
+			
+			var str2 = "이휘로,전윤주,김현슬,김두환,최영준";
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
+
+
+
+
+
+
+

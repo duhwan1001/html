@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			div {
+				border: 3px solid black;
+				width: 200px;
+				height: 200px;
+			}
+		</style>
+	</head>
+	<script>
+		function getLotto(){
+			//1~45까지 중복없이 6개의 숫자 생성
+			var arr = [];
+			
+			while(arr.length < 3){
+				
+				var no = Math.floor(Math.random() * 45 + 1);
+				
+				//배열에 담기전에 중복 값이 있는지 체크
+				if(arr.indexOf(no) == -1){
+					arr.push(no);
+				}
+			}
+			
+			//배열정렬
+			arr.sort(function(a, b) {
+				console.log("a : " + a);
+				console.log("b : " + b);
+				console.log("a - b : " + (a - b));
+				return a - b;
+			});		
+			
+			document.getElementById("output").innerHTML = arr;
+			
+			output.innerHTML = arr;
+		}
+	</script>
+	<body>
+		<h1>로또번호생성기</h1>
+		<div id="output">
+			생성구역
+		</div>
+		<button type="button" onclick="getLotto()">생성 ㄱ</button>
+		
+		<hr>
+		
+		<H3>가위바위보</H3>
+		<p>가위 바위 보 중 하나를 입력</p>
+		<br>
+		<input type="text" id="gbb">
+		<button type="button" onclick="gbb()">대결</button>
+		
+		<script>
+			function gbb() {
+				var arrGbb = ["가위", "바위", "보"];
+				var comIdx = parseInt(Math.random() * 3);
+				var comGbb = arrGbb[comIdx];
+				
+				var userGbb = document.getElementById("gbb").value; // 입력값
+				var userIdx = arrGbb.indexOf(userGbb);
+				
+				if(comIdx == userIdx){
+					
+					alert("비겼습니다. \n컴퓨터 :" + comGbb + "\n사용자 : " + userGbb);
+					
+				} else if (comIdx < userIdx){
+					//사용자가 이긴 경우
+					//(컴, 사) : (0,1) (1,2) (2,0)
+					if(comIdx == 0 && userIdx == 2) { //컴퓨터가 이김
+						alert("졌습니다. \n컴퓨터 :" + comGbb + "\n사용자 : " + userGbb);
+					} else { //사용자가 이긴경우
+						alert("이겼습니다. \n컴퓨터 :" + comGbb + "\n사용자 : " + userGbb);
+					}
+				} else if (comIdx > userIdx) {
+					if(comIdx == 2 && userIdx == 0){ //사용자가 이긴경우
+						alert("이겼습니다. \n컴퓨터 :" + comGbb + "\n사용자 : " + userGbb);
+					} else { //컴퓨터가 이김
+						alert("졌습니다. \n컴퓨터 :" + comGbb + "\n사용자 : " + userGbb);
+					}
+				}
+			}
+		</script>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

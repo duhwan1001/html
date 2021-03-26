@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			div {
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<input type="text" id="danselect">단
+			<button type="button" id="print" onclick="print()">출력</button><br>
+			<h1>결과출력</h1>
+		</div>
+		
+		<div>
+		<textarea id="result" rows="15"></textarea>
+		</div>
+		
+		<script>
+			function print(){
+				var clear = document.getElementById('result').innerHTML = "";
+				
+				var dan = document.getElementById('danselect').value
+							
+				for(var i=0; i<9; i++){
+					document.getElementById('result').innerHTML += dan +" * " + (i+1) + " = " + dan*(i+1) + "\n";
+				}
+			}
+			
+		</script>
+	</body>
+</html>

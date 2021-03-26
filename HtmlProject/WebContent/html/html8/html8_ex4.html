@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>HTML 요소 접근하기</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		function func() {
+			var obj = document.getElementById('test');
+			// ==> obj에 <h1>이 할당됨.
+			obj.style.color = "blue";
+			obj.style.border = "1px dotted green";
+		} 
+		</script>
+		
+		<h1 style="color: red;" id="test">getElementById 사용하기</h1>
+		<button type="button" onclick="func();">클릭</button>
+		
+		<hr>
+		
+		<h1>덧셈 계산기</h1>
+		
+		첫번째 정수:<input type="text" id="n1"><br>
+		두번째 정수:<input type="text" id="n2"><br>
+		합 계 : <input type="text" id="sum"><br>
+		<button type="button" onclick="sum();">계산</button>
+		<script>
+			function sum() {
+				//첫번쨰 정수와 두번째 정수 값을 가져와서 더한뒤 합계에 세팅하기
+				var first = document.getElementById("n1").value; //첫번째 정수라는 input
+				//var x = first.value;
+				
+				var second = document.getElementById("n2").value;
+				//var y = second.value;
+				
+				var sum = parseInt(first) + parseInt(second);
+				
+				document.getElementById("sum").value = sum;
+			}
+		</script>
+
+	</body>
+</html>

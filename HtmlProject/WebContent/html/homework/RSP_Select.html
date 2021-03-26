@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>가위바위보</title>
+		<style>
+			#head {
+				text-align: center;
+				font-size: 30pt;
+			}
+			
+			#head button {
+				padding: 20px 20px 20px 20px;
+				font-size: 10pt;
+			}
+			
+			#left {
+				text-align: center;
+				float: left;
+				width: 50%;
+			}
+			
+			#left p {
+				background-color: yellow;
+			}
+			
+			#right {
+				text-align: center;
+				float: right;
+				width: 50%;
+			}
+			
+			#right p {
+				background-color: red;
+			}
+			
+			#footer {
+				text-align: center;
+				font-size: 30pt;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="head">
+			<h2>가위 바위 보 중 하나를 입력</h2>
+			<select	id="choose">
+				<option>가위</option>
+				<option>바위</option>
+				<option>보</option>
+			</select>
+			
+			<button type="button" onclick="gbb()">출력</button>
+
+		</div>
+		<div id="left">
+			<p>사람</p>
+			<img alt="" src="../../images/ba_left.jpg" id="hum">
+		</div>
+		<div id="right">
+			<p>컴퓨터</p>
+			<img alt="" src="../../images/ba_right.jpg" id="com">
+		</div>
+		<div id="footer">
+		</div>
+		
+		<script>
+			function gbb(obj) {
+				
+				var obj = document.getElementById('choose').value
+				
+				
+				var humSide = document.getElementById("left");
+				var comSide = document.getElementById("right");
+				
+				document.getElementById("footer").innerHTML;
+				
+				var humImg = document.getElementById("hum");
+				humImg.remove();
+				
+				var comImg = document.getElementById("com");
+				comImg.remove();
+				
+				var arrGbb = ["가위", "바위", "보"];
+				var comIdx = parseInt(Math.random() * 3);
+				var comGbb = arrGbb[comIdx];
+				
+				var userGbb = obj; // 입력값
+				var userIdx = arrGbb.indexOf(userGbb);
+				
+				if(comIdx == userIdx){
+					
+					alert("비겼습니다. \n컴퓨터 :" + comGbb + "\n사용자 : " + userGbb);
+					
+					document.getElementById("footer").innerHTML = "비겼습니다";
+					
+				} else if (comIdx < userIdx){
+					//사용자가 이긴 경우
+					//(컴, 사) : (0,1) (1,2) (2,0)
+					if(comIdx == 0 && userIdx == 2) { //컴퓨터가 이김
+						alert("졌습니다. \n컴퓨터 :" + comGbb + "\n사용자 : " + userGbb);
+					
+						document.getElementById("footer").innerHTML = "졌습니다";
+					} else { //사용자가 이긴경우
+						alert("이겼습니다. \n컴퓨터 :" + comGbb + "\n사용자 : " + userGbb);
+					
+						document.getElementById("footer").innerHTML = "이겼습니다";
+					}
+				} else if (comIdx > userIdx) {
+					if(comIdx == 2 && userIdx == 0){ //사용자가 이긴경우
+						alert("이겼습니다. \n컴퓨터 :" + comGbb + "\n사용자 : " + userGbb);
+					
+						document.getElementById("footer").innerHTML = "이겼습니다";
+					} else { //컴퓨터가 이김
+						alert("졌습니다. \n컴퓨터 :" + comGbb + "\n사용자 : " + userGbb);
+					
+						document.getElementById("footer").innerHTML = "졌습니다";
+					}
+				}
+				
+				var imgAddhum = document.createElement("img");
+				var imgAddcom = document.createElement("img");
+				
+				humSide.appendChild(imgAddhum);
+				comSide.appendChild(imgAddcom);
+				
+				imgAddhum.alt = "image";
+				imgAddhum.src = "../../images/";
+				imgAddhum.id = "hum";
+				if(userGbb == "가위"){
+					imgAddhum.src += "ga_left.jpg";
+				} else if(userGbb == "바위"){
+					imgAddhum.src += "ba_left.jpg";
+				} else if(userGbb == "보"){
+					imgAddhum.src += "bo_left.jpg";
+				}
+				
+				imgAddcom.alt = "image";
+				imgAddcom.src = "../../images/";
+				imgAddcom.id = "com";
+				if(comGbb == "가위"){
+					imgAddcom.src += "ga_right.jpg";
+				} else if(comGbb == "바위"){
+					imgAddcom.src += "ba_right.jpg";
+				} else if(comGbb == "보"){
+					imgAddcom.src += "bo_right.jpg";
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+

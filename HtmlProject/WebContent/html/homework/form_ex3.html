@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			#selectLeft{
+				width: 400px;
+				height: 400px;
+				position: absolute;
+			}
+			
+			#selectRight{
+				width: 400px;
+				height: 400px;
+				position: absolute;
+				left: 570px;
+			}
+			
+			#btnArea {
+				width: 40px;
+				height: 400px;
+				position: absolute;
+				left: 440px;
+			}
+			
+			button {
+    			width: 100px;
+    			line-height: 70px;
+    			margin-top: 20px;
+			}
+			
+			footer {
+				position: absolute;
+				top: 500px;
+			}
+		</style>
+		<script>
+			function addNumL() {
+				//좌측 셀렉박스 값 가져오기
+				var leftSel = document.getElementById('selectLeft');
+				
+				var makeOp = document.createElement('option');
+				
+				var inputVal = document.getElementById('addNum').value
+				
+				leftSel.appendChild(makeOp);
+				
+				makeOp.value = inputVal;
+				
+				makeOp.innerHTML = inputVal;
+			}
+			
+			function addNumR() {
+				//좌측 셀렉박스 값 가져오기
+				var rightSel = document.getElementById('selectRight');
+				
+				var makeOp = document.createElement('option');
+				
+				var inputVal = document.getElementById('addNum').value
+				
+				rightSel.appendChild(makeOp);
+				
+				makeOp.value = inputVal;
+				
+				makeOp.innerHTML = inputVal;
+			}
+			
+			function leftToRightOne() {
+				var right = document.getElementById('selectRight')
+				
+				var makeOp = document.createElement('option');
+				
+				var leftVal = document.getElementById('selectLeft').value
+				
+				right.appendChild(makeOp)
+				
+				makeOp.value = leftVal;
+				
+				makeOp.innerHTML = leftVal;
+				
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="main">
+			<h1>select 객체 예제</h1>
+			<select multiple="multiple" size="10" id="selectLeft">
+				<option value="5">5</option>
+				<option value="5">5</option>
+				<option value="5">5</option>
+				<option value="5">5</option>
+			</select>
+			<div id="btnArea">
+				<button type="button" onclick="leftToRightOne()">></button>
+				<button type="button" onclick="">>></button>
+				<button type="button" onclick=""><</button>
+				<button type="button" onclick=""><<</button>
+			</div>
+			<select multiple="multiple" size="10" id="selectRight">
+				<option value="5">5</option>
+				<option value="5">5</option>
+				<option value="5">5</option>
+				<option value="5">5</option>
+			</select>
+			<footer>
+				<input type="text" id="addNum"> <button type="button" id="addBtn" onclick="addNumL()">왼쪽에 추가</button>
+				<button type="button" id="addBtn" onclick="addNumR()">오른쪽에 추가</button>
+			</footer>
+			</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

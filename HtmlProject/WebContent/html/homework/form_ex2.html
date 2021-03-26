@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			div {
+				overflow: scroll;
+				width: 500px;
+				height: 500px;
+				background-color: gray;
+				border: 3px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		이름 : <input type="text" id="name" value="">
+		<br>
+		성별 : <input type="radio" value="남성" id="gender-male" name="gender">
+				<label for="gender-male">남</label>
+			<input type="radio" value="여성" id="gender-female" name="gender">
+				<label for="gender-female">여</label>
+		<br>
+		취미 : <input type="checkbox" value="여행" id="travel">
+				<label for="gendm">여행</label>
+		      <input type="checkbox" value="여행" id="travel"><label>여행</label>
+		      <input type="checkbox" value="여행" id="travel"><label>여행</label>
+		      <input type="checkbox" value="여행" id="travel"><label>여행</label>
+		      <input type="checkbox" value="여행" id="travel"><label>여행</label>
+		
+		<br>
+		<br>
+		<button onclick="result()">결과출력</button>
+		<br>
+		<br>
+		
+		<div id="result">
+		
+		</div>
+		
+		<script>
+			function result() {
+				var name = document.getElementById('name').value;
+				
+				document.getElementById('result').innerHTML = name + "씨" + "<br>";
+				
+				var maleCheck = document.getElementById('gender-male').checked;
+				var femaleCheck = document.getElementById('gender-female').checked;
+				
+				var travelCheck = document.getElementById('travel').checked;
+				var readCheck = document.getElementById('read').checked;
+				var movieCheck = document.getElementById('movie').checked;
+				
+				if(maleCheck == true) {
+					document.getElementById('result').innerHTML += "당신은 남자이고" + "<br>";
+					femaleCheck = false;
+				}
+				if(femaleCheck == true) {
+					document.getElementById('result').innerHTML += "당신은 여자이고" + "<br>";
+					maleCheck = false;
+				}
+				
+				if(travelCheck == true) {
+					document.getElementById('result').innerHTML += "취미는"
+					document.getElementById('result').innerHTML += "여행,";
+				}
+				if(readCheck == true) {
+					document.getElementById('result').innerHTML += "독서,";
+				}
+				if(movieCheck == true) {
+					document.getElementById('result').innerHTML += "영화감상,";
+					document.getElementById('result').innerHTML += "이군요"
+				}
+				
+				if(travelCheck == false && readCheck == false && movieCheck == false) {
+					document.getElementById('result').innerHTML += "취미가없군요";
+				}
+				
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+

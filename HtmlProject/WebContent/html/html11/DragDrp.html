@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			div.box {
+				border: 3px solid pink;
+				height: 500px;
+			}
+			img {
+				height: 100px;
+			}
+		</style>
+		<script>
+		
+			var obj = null;
+		
+/* 			function dragObj(ele) {
+				
+			} */
+			
+			function dragObj(ev) {
+				ev.dataTransfer.setData("text", ev.target.id); // ev.target.id
+				// ==> 대상요소에 id가 있어야 함.
+			}
+			
+			function dropObj(ev) {
+				ev.preventDefault();
+				//ev.target ==> <div>
+				//ev.target ==> 이벤트가 발생한 요소(ealement)
+
+				if(obj == null) {
+					var eleId = ev.datatransfer.getData("text");
+					obj = document.getElementById(eleId);
+				}
+				
+				ev.target.append(obj);
+				obj = null;
+			}
+			
+			function allowDrop(ev) {
+				ev.preventDefault();
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<p>원하는 물건을 끌어서 올리세요.</p>
+		</div>
+		<div class="box" ondrop="dropObj(event)" ondragover="allowDrop(event)"></div>
+		<div>
+			<img ondragstart="dragObj(this)" id="ex1" alt="img1" src="../../images/fff.png">
+			<img id="img2" alt="img2" src="../../images/fff.png">
+			<img alt="img3" src="../../images/fff.png">
+		</div>
+	</body>
+</html>

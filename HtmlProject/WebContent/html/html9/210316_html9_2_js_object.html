@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>object의 배열 변환</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// object를 배열로 변환 - Object.values()
+			
+			var person = {name : "홍길동" 
+					,age : 30 
+					,city:"경주"};
+			var myArray = Object.values(person);
+			//페이지가 새로 쓰여지기에 write보다는 alert로 할것
+			//document.write(myArray); 
+			alert(myArray);
+			document.write(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+			document.write("object를 문자로 변환 - JSON.stringify()<br>");
+			document.write(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+			JSON.stringify(person)
+			
+			
+			
+		</script>
+	</body>
+</html>

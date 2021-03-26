@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			p, div {
+				width: 200px;
+				height: 100px;
+			}
+		
+			#ex1 {
+				background-color: aqua;
+			}
+			
+			#ex2 {
+				background-color: yellow; 
+				position: fixed;
+				/*position: fixed; ex) 게시글 상단 등등 */
+				left: 50px;
+				top: 30px;
+			}
+			
+			#ex3 {
+				background-color: blue;
+			}
+			
+			#container {
+				background-color: gray;
+				position: relative;
+			}
+			
+			img {
+				position: absolute; 
+				top: 500px; 
+				z-index: -1;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>position 연습</h1>
+		<p id="ex1">블럭1</p>
+		<div id="container">
+			<div id="ex2">블럭2 (position)</div>
+		</div>
+		<p id="ex3">블럭3</p>
+		
+		<hr>
+		
+		<h1>z-index 연습</h1>
+		<img src="../../images/fff.png" alt="fff">
+		<p>z-index 연습 300x300 px image</p>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

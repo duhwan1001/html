@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>새로운 요소 만들기</title>
+		<script src="../../js/jquery-3.6.0.js"></script>
+	</head>
+	<style>
+		div{
+			
+		}
+	</style>
+	<body onload="init()">
+		<h1>이미지 추가</h1>
+		<button type="button" onclick="addImg()">추가</button>
+		<hr>
+		<div>
+		</div>
+		<script>
+			// onload 이벤트 - 화면이 준비가 되면 호출되는 함수
+			// onload 예제 1
+			//$(document).ready(function(){
+				//alert("준비완료");
+			//});
+			
+			// onload 예제 2
+			function init(){ // 초기화라는 의미
+				//화면의 기본값을 세팅, DB정보를 조회해서 화면에 설정
+				alert("준비완료");				
+			}
+		
+			function addImg(){
+				var exImg = $("<img>", {
+					"alt" : "fff"
+					,"src" : "../../images/fff.png"
+					,"height" : "100"
+					,"click" : function(){
+						$(this).css("border", "2px solid red")
+						$(this).css("border-radius", "40px")
+					}
+				});
+				exImg.appendTo('div');
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			div {
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<select id="danselect">
+			</select>
+			<button type="button" id="print" onclick="print()">출력</button><br>
+			<h1>결과출력</h1>
+		</div>
+		
+		<script>
+			var parentEle = document.getElementById("danselect"); //<select>
+			
+			for(var i=0; i<9; i++){				
+				//<option value="2">2단</option>
+				var ele = document.createElement("option");
+				ele.value = i+1;
+				ele.innerHTML = i+1 + "단";
+				
+				parentEle.appendChild(ele);
+			}
+		</script>
+		
+		<script>
+			function print(){
+				
+				var dan =  document.getElementById("danselect").value;
+				
+				var result = "";
+								
+				for(var i=0; i<9; i++){
+					result += dan +" * " + (i+1) + " = " + dan*(i+1) + "\n";
+				}
+				
+				// case1) 요소를 생성해서 추가 - createElement
+				var ele = document.createElement("p");
+				ele.innerHTML = result;
+				document.getElementById("result").appendChild(ele);
+				// case2) 노드를 생성해서 추가 - createTextNode
+				
+				var node = document.createTextNode(result);
+				document.getElementById("result").appendChild(node);
+				
+				// case3) innerHTML
+				var tmpHtml = document.getElementById("result").innerHTML;
+				tmpHtml = tmpHTML + result;
+				document.getElementById("result").innerHTML = tmpHtml;
+			}
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+

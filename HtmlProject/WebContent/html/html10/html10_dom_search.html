@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			#circle img {
+				border-radius: 60%;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			function addtext(t) {
+				var node = document.createTextNode(t);
+				document.getElementById("target").appendChild(node);
+			}
+		</script>
+		<p id="tmp1">동해물과 백두산이</p>
+		<ul id="tmp2">
+			<li>아메리카노</li>
+			<li id="tmp3">카푸치노</li>
+			<li>카페라떼</li>
+		</ul>
+		<div id="target" style="font: 20px bold" onclick="addtext('무궁화 꽃이 피었습니다.')">
+		여기를 클릭하세요
+		</div>
+		
+		<hr>
+		<script>
+			function addImages() {
+				var arr = document.getElementsByTagName("li");
+				
+				//이미지 소스를 가지고 있는 배열
+				var arrImgSrc = ["fff.png", "off.jpg", "on.jpg","poster.jpg","pulsar.jpg","poster.jpg","pulsar.jpg","pulsar.jpg"]
+				for(var i = 0; i<arr.length; i++){
+					// 이미지 요소를 생성
+					var imgObj = document.createElement("img");
+					//<img alt="" src="../../images/fff.png" height="30"> 
+					arr[i].appendChild(imgObj);
+					imgObj.alt = "뭐지";
+					imgObj.src = "../../images/" + arrImgSrc[i];
+					imgObj.height = "30";
+					
+					arr[i].appendChild(imgObj);
+					// <li>구름</li> ==> <li>구름<img></li>
+				}
+			}
+		</script>
+		<button type="button" onclick="addImages()">실행</button>
+		<ul id="circle">
+			<li>컴퓨터1</li>
+			<li>식품2</li>
+			<li>호랑이</li>
+			<li>cloud03</li>
+			<li>coffee1</li>
+		</ul>
+		
+		<hr>
+		
+		<div id="target1">
+			<p id="p1">첫번째 단락</p>
+			<p id="p2">두번째 단락</p>
+		</div>
+		<button type="button" onclick="removeEle()">삭제</button>
+		<script>
+			function removeEle() {
+				var parentEle = document.getElementById("target1"); // <div>
+				var childEle = document.getElementById("p1"); // <p>
+				parentEle.removeChild(childEle);
+			}
+		</script>
+		
+		<hr>
+		
+		<ul>
+			<li id="tp1" onclick="appendImg(this)">컴퓨터1</li> <!-- this = li -->
+			<li id="tp2" onclick="appendImg(this)">식품2</li>
+			<li id="tp3" onclick="appendImg(this)">호랑이</li>
+			<li id="tp4" onclick="appendImg(this)">cloud03</li>
+			<li id="tp5" onclick="appendImg(this)">coffee1</li>
+		</ul>
+		<script>
+			function appendImg(obj) {
+				
+				var arrImgs = document.getElementsByTagName("img");
+				for(var i=0; i<arrImgs.length; i++) {
+					arrImgs[i].remove(); //이미지를 추가하기전 이미 사용되고 있을수도 있는 이미지를 위해 전부 삭제하고 시작한다.
+										 //뒤에서부터 지워주는것이 안정적이지만. 이것의 경우 이미지가 하나만 사용되기 때문에 무관하다.	
+				}
+				
+				var imgAdd = document.createElement("img");
+				obj.appendChild(imgAdd);
+				
+				imgAdd.alt = "image";
+				imgAdd.src = "../../images/";
+				
+				if(obj.id == "tp1"){
+					imgAdd.src += "fff.png";	
+				} else if (obj.id == "tp2") {
+					imgAdd.src += "poster.jpg";
+				} else if (obj.id == "tp3") {
+					imgAdd.src += "on.jpg";
+				} else if (obj.id == "tp4") {
+					imgAdd.src += "off.jpg";
+				} else if (obj.id == "tp5") {
+					imgAdd.src += "pulsar.jpg";
+				}
+				
+				imgAdd.height = "30";
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h1>1.숫자 2개와 연산자를 입력받아 그에 맞는 결과 도출</h1>
+		<script>
+ 			var n1 = prompt("첫번째 숫자", "ex");
+			var m = prompt("연산자", "ex");
+			var n2 = prompt("두번째 숫자", "ex");
+			
+			n1 = parseInt(n1);
+			n2 = parseInt(n2);
+			
+			var sum = 0;
+			// == : 값이 같으면 pass, === : 값이 같고 유형도 같으면 pass
+			// typeof : 데이터 유형 확인할 때 사용
+			
+			if(m == "+") {
+				sum = n1 + n2;
+			} else if(m == "-") {
+				sum = n1 - n2;
+			} else if(m == "*") {
+				sum = n1 * n2;
+			} else if(m == "/") {
+				sum = n1 / n2;
+			} else if(m == "%") {
+				sum = n1 % n2;
+			}
+			
+			document.write(sum);
+		</script>
+		
+		<h1>2.점수를 입력받아 학점을 출력</h1>
+		<script type="text/javascript">
+			var score;
+			var grade;
+			
+			score = prompt("insert");
+			score = parseInt(score);
+			switch(parseInt(score / 10)){
+				case 10: case 9: 
+					grade = "A"; 
+					break;
+				case 8:
+					grade = "B"; 
+					break;
+				case 7:
+					grade = "C"; 
+					break;
+				case 6:
+					grade = "F"; 
+					break;
+				default:
+					grade = "D"; 
+					break;
+			}
+			
+			document.write("등급 : " + grade);
+		</script>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

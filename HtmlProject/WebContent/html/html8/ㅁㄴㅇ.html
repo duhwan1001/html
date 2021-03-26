@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>과제</title>
+	</head>
+	<body>
+		<h1>1. 1부터 10까지의 합을 구하는 프로그램을 작성하시오</h1>
+		<script type="text/javascript">
+			var sum = 0;
+			for(var i=0; i<11; i++){	
+				sum += i;
+			}	
+			document.write("1번문제 답 : " + sum);
+		</script>
+		<h1>2. 1부터 200까지의 짝수의 합을 구하는 프로그램을 작성하시오.(continue를 이용)</h1>
+		<script type="text/javascript">
+			var sum = 0;
+			for(var i=0; i<201; i++){
+				if(i % 2 == 1){
+					continue;
+				} else {
+					sum += i;	
+				}
+			}
+			document.write("2번문제 답 : " + sum);
+		</script>
+		<h1>3. 사용자가 입력한 값을 계속 더하고,사용자가 0을 입력하면 그때까지 누적된 값을 출력하는 프로그램을 작성하시오.</h1>
+		<script>
+			var sum = 0;
+			var input = 0;
+			do{
+				input = prompt("현재 더한값은" + sum + "입니다.", "더할 숫자를 입력하세요. 0을 입력하면 종료합니다.")
+				sum += parseInt(input);	
+			} while (input != 0);
+			
+			document.write("더한값 = " + sum);
+		</script>
+		
+		<h1>4. 다중 for문을 이용해서 1~ 10 까지 중 i와 k의 더한 합이 3의 배수일때만 출력 continue를 이용</h1>
+		<script>
+			for(var i=1; i<11; i++){
+				for(var k=1; k<11; k++){
+					var sum = i+k;
+					if(sum % 3 ==0){
+						document.write(sum + " / ")
+					}
+				}
+			}
+		</script>
+		<h1>5. 1~100까지의 중 2의 배수이면서 3의 배수인것만 출력</h1>
+		<script>
+			for(var i=0; i<101; i++){
+				if(i%2 ==0 && i%3==0){
+					document.write(i + " / ");
+					
+				}
+			}
+		</script>
+		
+		<h1>6. 두 수를 입력받고 두수의 합이 100이상일때만 출력, 두수 모두 0이 입력되면 종료</h1>
+		<script>
+			while(true){
+				var n1 = prompt("n1 입력, 입력받은 숫자의 합이 100 이상일때만 출력합니다.");
+				
+				var need = 100 - n1;
+				var n2 = prompt("입력받은 n1의 값: " + n1 + "  / 100까지 필요한 숫자 :" + need, "n2 입력");
+				n1 = parseInt(n1);
+				n2 = parseInt(n2);
+				
+				if((n1+n2) >= 100){
+					document.write(n1+n2);
+					break;
+				}
+				if((n1+n2 < 100)){
+					document.write("100보다 작습니다.");
+					break;
+				}
+				if((n1+n2) == 0) {
+					document.write("종료되었습니다.");
+					break;
+				}
+			}
+		</script>
+	
+	</body>
+</html>
+
+
+
+
+
+

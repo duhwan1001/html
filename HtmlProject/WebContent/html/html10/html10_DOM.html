@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM</title>
+	</head>
+	<body>
+		<form>
+			<input type="text" id="target" name="userName">
+			<button type="button" onclick="proc()">제출</button>
+			
+			<div>
+				무궁화 꽃이 피었습니다.
+			</div>
+			<button type="button" onclick="get()">내용 가져오기</button>
+			<button type="button" onclick="set('ㅎㅇ')">내용 바꾸기</button>
+			
+			<hr>
+			<img id="image1" alt="500x500" src="../../images/fff.png" width="100">
+			<button type="button" onclick="changeImage()">이미지 변경</button>
+			
+			<hr>
+			<p id="p1" style="border: 1px solid red; color: black;">동해물과 백두산이 마르고 닳도록</p>
+			<button type="button" onclick="changeStyle()">스타일 변경</button>
+			
+			<hr>
+			<img onclick="Switch()" id="image2" alt="on" src="../../images/off.jpg" width="100">
+			
+		</form>
+		<script>
+			function Switch() {
+				var orgSrc = document.getElementById("image2").src;
+				
+				var newSrc;
+				//현재 이미지가 on인 경우
+				if(orgSrc.indexOf("off") > -1) {
+					newSrc = "../../images/on.jpg";
+				} else {
+					newSrc = "../../images/off.jpg";
+				}
+				
+				document.getElementById("image2").src = newSrc;
+			}
+		
+			function changeStyle() {
+				document.getElementById("p1").style.color = "red";
+				document.getElementById("p1").style.border = "1px solid black";
+				document.getElementById("p1").style.fontStyle = "italic";
+			}
+		
+			function changeImage() {
+				document.getElementById("image1").src = "../../images/pulsar-831502910.jpg"	
+			}
+			
+			function get() {
+				//document.getElementsByTagName("div"); // 배열로 반환
+				var obj = document.getElementsByTagName("div")[0]; // div 반환
+				alert(obj.innerHTML);
+			}
+			
+			function set(param) {
+				var obj = document.getElementsByTagName("div")[0].innerHTML
+				= param;
+			}
+		
+			function proc() {
+				var obj = document.getElementById("target");
+				
+				alert(obj);
+				alert(obj.value);
+			}
+		</script>
+	</body>
+</html>

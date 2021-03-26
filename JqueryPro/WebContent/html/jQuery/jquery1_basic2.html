@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>JQuery basic</title>
+		<script src="../../js/jquery-3.6.0.js"></script>
+	</head>
+	<body>
+		<h1 onclick="hide()">JQuery 테스트</h1>
+		<h2 class="sample">class : sample</h2>
+		<h2 id="tmp">id : tmp</h2>
+		<h2 title="asdf">title : asdf</h2>
+		<h2 title="fdsa">title : fdsa</h2>
+	</body>
+	<script>
+		$(document).ready(function (){
+			$('body').css("background-color", "gray");
+			$('h1').css("color", "blue");
+			$('.sample').css("color", "green");
+			$('#tmp').css("color", "red");	
+			
+			//문서가 로딩되고 나서
+			//h2 요소에 클릭 이벤트 설정해주기
+			$('h2').click(function(){
+			//	$('h2').hide(); -- 전부
+				$(this).hide(); // -- 클릭 이벤트가 발생한 h2만
+			});
+			
+		});
+		
+		function hide(){
+			$('h1').hide();
+		}
+		
+	</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

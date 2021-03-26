@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>객체 생성 방법</title>
+		<script>
+/* 			var myCar = {
+					model : "GV80"
+					, color : "blue"
+					, year : 2002
+					, speed : 30
+					, brake : function() {
+						// 속도 줄이기 (speed)
+						this.speed -= 10;						
+					}
+					, accel : function() {
+						// 속도 올리기 (speed)
+						this.speed += 10;	
+					}
+			};
+			
+			alert(myCar.color);
+			
+			myCar.color = "red";
+			alert(myCar.color);
+			
+			alert(myCar.speed);
+			myCar.brake();
+			alert("brake 사용 후 : " + myCar.speed);
+			
+			//생성자를 이용한 객채 생성
+			function Car(model, color, speed){
+				//객체의 속성
+				this.model = model;
+				this.speed = speed;
+				this.color = color;
+				//자바와 유사하다.
+				
+				this.brake = function() {
+					this.speed -= 10;
+				}
+				this.accel = function() {
+					this.speed += 10;
+				}
+			}
+			
+			var hongCar = new Car("GV70", "red", 100);
+			var leeCar = new Car("GV80", "blue", 0);
+			
+			hongCar.color = "white";
+			alert(hongCar.color);
+			alert(hongCar.speed); */
+			
+			//object를 배열로 변환 - Object.values()
+			var person = {
+				name : "홍길동"
+				,age : 30
+				,city : "대전"
+				,nation : "대한민국"
+				,job : "무직"
+			};
+			var tmp = Object.values(person);
+			document.write(tmp);
+			Object.values(tmp);
+			/* Object.values(person).length; */
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

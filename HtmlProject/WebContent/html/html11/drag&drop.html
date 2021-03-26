@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			div {
+				height: 200px;
+				border: 1px solid red;
+			}
+		</style>
+		<script>
+			function drag(ev) {
+				console.log(ev);
+				console.log(ev.target);
+				ev.dataTransfer.setData("text", ev.target.id);
+			}
+			
+			function drop(ev) {
+				ev.preventDefault();
+				console.log("drop 이벤트 : " + ev.target);
+				var data = ev.dataTransfer.getData("text");
+				console.log("data : " + data);
+				
+				var img = document.getElementById(data);
+				ev.target.appendChild(img);
+			}
+			
+			function allowDrop(ev) {
+				ev.preventDefault();
+			}
+		</script>
+	</head>
+	<body>
+		<div ondrop="drop(event)" ondragover="allowDrop(event)">이미지를 옮겨올 영역</div>
+		<br>
+		<img id="fff" alt="img" src="../../images/fff.png" draggable="true" ondragstart="drag(event)"> <!-- this와 유사한 event -->
+	</body>
+</html>

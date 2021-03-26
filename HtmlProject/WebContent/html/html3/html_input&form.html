@@ -1,0 +1,97 @@
+<DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>input</title>
+	</head>
+	<body>
+		<form>
+			<!-- 아이디, 비번, 이름, 이메일, 저장버튼 -->
+			<fieldset>
+			<legend>회원정보</legend>
+			아이디 : 
+				<input type="text" name="userId" maxlength="10">
+			<br>
+			비밀번호 : 
+				<input type="password" placeholder="비밀번호는 3자리 이상입니다."required>
+			<br>
+			이름 : 
+				<input type="text">
+			<br>
+			이메일 : 
+				<input type="text" name="email" disabled>
+			<br>
+			성별 :
+				<input type="radio" value="M" name="gender" id="gendermale">
+				<label for="gendermale">남자</label>
+				<input type="radio" value="F" name="gender" id="genderfemale">
+				<label for="genderfemale">여자</label>
+			<br>
+			거주지역 :
+				<input type="radio" value="daejeon" name="gender" id="location">대전
+				<input type="radio" value="no daejeon" name="gender">대전 외
+			<br>
+			취미 : 
+				<input type="checkbox" name="hobby" id="hobbybook">
+				<label for="hobbybook">독서</label>
+				<input type="checkbox" name="hobby" readonly>운동
+				<input type="checkbox" name="hobby">영화보기
+				<input type="checkbox" name="hobby">여행
+				<input type="checkbox" name="hobby">맛집탐방
+			<br>
+			자격증 : 
+				<input type="checkbox" name="license">교원자격증
+				<input type="checkbox" name="license">용접기능사
+				<input type="checkbox" name="license">정보처리기사
+			<br>
+			프로필 사진 :
+				<input type="file" name="file" accept=".gif, .jpg, .png">
+			</fieldset>
+			<br>
+			저장버튼 : 
+				<input type="button" value="저장">
+			<br>
+			submit :
+				<input type="submit" value="전송">
+			<br>
+				<input type="reset" value="reset">
+			<br>
+				<input type="hidden" value="****">
+				
+			<hr>
+			
+			날짜 : <input type="date"><br>
+			날짜&시간 : <input type="datetime"><br>
+			월 : <input type="month"><br>
+			시간 : <input type="time"><br>
+			주 : <input type="week"><br>
+			색상 : <input type="color"><br>
+			이메일 : <input type="email"><br>
+			전화번호 : <input type="tel"><br>
+			범위 : <input type="range"><br>
+			숫자 : <input type="number" min="230" max="300" step="10"><br>
+			URL : <input type="url"><br>
+			
+			<hr>
+			
+			<input type="button" value="저장">
+			<br>
+			<button type="button" onclick="alert('저장버튼을 클릭하셨네요.')">저장버튼</button>
+			<button type="submit">전송버튼</button>
+			<button type="rest">초기화버튼</button>
+			<br>
+			비고
+			<br>
+			<textarea rows="5" cols="50" name="etc"></textarea>
+			
+			<hr>
+			
+			자동차 브랜드 : 
+			<select name="car">
+				<option value="C">쉐보레</option>
+				<option value="H" selected>현대</option>
+				<option vaule="K">기아</option>
+			</select>
+		</form>
+	</body>
+</html>

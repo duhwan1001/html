@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Date</title>
+		<script type="text/javascript">
+			//오늘날짜
+			var today = new Date();
+			var time = today.getTime();
+			
+			document.write(today + "<br>");
+			document.write(time + "<br>");
+			
+			// 3일 뒤 날짜 계산
+			// 3일을 시간(milsec)으로 계산
+			var d_day = time+ 3 * 24 * 60 * 60 * 1000;
+			document.write(d_day + "<br>");
+			document.write(new Date(d_day)+"<br>");
+			document.write("<hr>");
+			/* 날짜 비교 하기 */
+			function checkDate(){
+				// 오늘 날짜와 구입일자를 비교하기
+				
+				// 구입일자
+				var buyDate = document.getElementById("buyDate").value;
+				alert(buyDate); // 2000-00-00 형태
+				
+				buyDate = new Date(buyDate); //Date형식으로 변환
+				buyTime = buyDate.getTime();
+				
+				//오늘
+				var curDate = new Date();
+				curTime = curDate.getTime();
+				var ans = curTime-buyTime;
+				ans = ans/1000/60/60/24;
+				console.log=(ans);
+				alert("구매하신지 "+parseInt(ans)+"일이 지났습니다.")
+				document.getElementById("ans1").innerHTML = parseInt(ans);
+				if(parseInt(ans) > 7) {
+					alert("교환/환불 기간이 경과하였습니다");
+				}
+			}
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		구입일자 : <input type="date" id="buyDate">
+		<button type="button" onclick="checkDate()">확인</button>
+		<h3>결과출력</h3>
+		<div id= "ans1"></div>
+	</body>
+</html>

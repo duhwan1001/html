@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			function readFile() {
+				//documnet.getElementById("attachFile"); // input
+				var files = document.getElementById("attachFile").files; // input
+				//files[0] ==> File객체
+				var file = files[0];
+				
+				//textarea에 담을 문자 만들기
+				var str = "";
+				str += "파일명 : " + file.name + "\n"; //파일명
+				str += "사이즈 : " + file.size + "\n"; //사이즈
+				str += "타입명 : " + file.type + "\n"; //타입명
+				str += "최종수정일자 : " + file.lastModifiedDate  + "\n"; //최종수정일자
+				
+				document.getElementById("result").innerHTML = str;
+			}
+			
+			function readFileContent() {
+				var files = document.getElementById("attachFile").files;
+				
+				var file = files[0]; // 파일을 file에 담음
+				var reader = new FileReader(); //파일을 읽기 위한 객체
+				reader.readAsText(file); // 파일을 읽어서 reader에 담기
+				// 파일을 읽어서 FileReader객체의 result 속성에 담는다.
+				
+				// 파일 읽기가 끝나면
+				reader.onload = function () {
+					// onload 이벤트에서 수행할 내용
+					document.getElementById("result").innerHTML
+					= reader.result; // reader에서 renderAsText로 읽어온 값이 result에 담긴다. 그것을 담아줌
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="file" id="attachFile">
+		<button type="button" onclick="readFileContent()">파일읽기</button>
+		<br>
+		<br>
+		<textarea rows="6" cols="50" id="result"></textarea>
+	</body>
+</html>

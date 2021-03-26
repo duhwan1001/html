@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>JQuery basic</title>
+		<script src="../../js/jquery-3.6.0.js"></script>
+	</head>
+	<body>
+		<button type="button" onclick="test()">클릭</button>
+	</body>
+	<script>
+		function test(){
+			var ele = $("<p id='' class='' >요소 생성</p>"); // p요소가 생성됨
+			ele.appendTo('body');
+			
+			//var img = $("<img alt='fff' src='../../images/fff.png'");
+			var img = $("<img>", {
+				"alt" : "fff"
+				,"src" : "../../images/fff.png"
+				,"height" : "100"
+				,"click" : function(){
+					alert("밥");	
+				}
+			});
+			img.appendTo('body');
+		}
+	</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

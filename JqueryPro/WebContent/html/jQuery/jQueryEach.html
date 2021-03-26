@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="../../js/jquery-3.6.0.js"></script>
+	</head>
+	<body>
+		<p>엄마상어 뚜루루루루</p>
+		<p><strong>아빠상어</strong> ㄸ루루루ㅜ</p>
+		<p>아기상어 뚜루루루루</p>
+		<p>할머니상어 뚜루루루루</p>
+		<hr>
+		<button type="button" onclick="getHTML()">html()</button>
+		<button type="button" onclick="getTEXT()">text()</button>
+		<button type="button" onclick="testRepeat()">반복문테스트</button>
+		<div id="result">
+		</div>
+	</body>
+	<script>
+		function testRepeat(){
+			// case 1 : 일반 for문
+			/* var objs = $("p");
+			for(var i=0; i<objs.length; i++){
+				alert(i + "번째 : " + $(objs[i]).text());
+				// alert(objs[i].text());
+				// objs[i]를 대괄호로 감싸줘야함 
+			} */
+			
+			// case 2 : jQuery each문 사용 - selector 이용
+			
+			 
+			/* $("p").each(function(){
+				alert($(this).html()) // ==> objs[i] / <p>
+				//console.log(this); // ==> objs[i]
+			}); */
+			
+			/* $("p").each(function(){ // 파라미터를 하나만 사용할경우 index로 인식한다.
+				alert($(this).html()) // ==> objs[i] / <p>
+				//console.log(this); // ==> objs[i]
+			}); */
+			
+			/* $("p").each(function(index, item){ // 파라미터를 하나만 사용할경우 index로 인식한다.
+				console.log(index + "/" + item);
+				alert($(item).html()) // ==> objs[i] / <p>
+				//console.log(this); // ==> objs[i]
+			}); */
+			
+			// case 3 : jquery each문 사용 - object 이용
+			var arr = ["현대", "기아", "쉐보레"]; // <== 서버로 부터 결과를 받은 list인 경우 이런식으로 사용하기도 함
+			$.each(arr, function(idx, obj){
+				//arr[idx] ==> obj
+				console.log(obj);
+				//console.log(this); == this를 사용하면 String 객체가 생성되면서 속도가 느려짐 . 비추
+			})
+			
+			
+			
+		}
+		
+		function getHTML(){
+			var result = $("p").html(); // get메소드 역할.
+			$("#result").html(result); // set메소드 역할.
+			// ==> js : document.getElementById("result").innerHTML = result;
+		}
+		
+		function getTEXT(){
+			var result = $("p").text(); // get메소드 역할.
+			$("#result").text(result); // set메소드 역할.
+		}
+	</script>
+</html>
