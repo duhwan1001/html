@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				
+				$("p").click(function(){
+					alert("클릭했습니다.");
+				});
+				/* $('p').mouserover(function(){
+				$('p').mouseout(function(){ */
+					
+				$("p").on({
+					mouseover : function(){
+						//배경색 바꾸기
+						//$("p").css("background-color", "yellow");
+						$(this).css("background-color", "yellow"); //p태그 하나만 바꾸고 싶을때
+					}
+					, mouseout : function(e){
+						//배경색 원래대로 바꾸기
+						//$("p").css("background-color", "");
+						$(this).css("background-color", "");
+						console.log(e);
+						console.log(e.type); // ==> mouseout
+						console.log(e.target); // ==> <p>이벤트를 넣어줄게요</p>
+						console.log(e.button); // ==> 0
+					}
+						
+				})
+			})
+			
+		</script>
+	</head>
+	<body>
+		<h1>JQUERY 이벤트</h1>
+		<p>이벤트를 넣어줄게요</p>
+		<p>이벤트를 넣어줄게요</p>
+		<p>이벤트를 넣어줄게요</p>
+		<p>이벤트를 넣어줄게요</p>
+	</body>
+</html>

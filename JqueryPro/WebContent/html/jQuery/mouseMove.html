@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("div").css("border", "3px solid black");
+				
+				$("div").mousemove(function(e){
+					var str = "pageX : " + e.pageX 
+							+ "pageY : " + e.pageY
+							+ "screenX : " + e.screenX
+							+ "screenY : " + e.screenY
+					$("div[id='log']").html(str) 
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="log" style="height: 200px;"></div>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("body").mouseover(function(e){
+					// 이벤트명, 클릭한요소, 클릭한 위치 좌표, 클릭한 버튼종류를 메시지로 출력
+					var str = "";
+					str = "이벤트 종류 :" + e.type + "\n"
+						+ "이벤트 발생요소 : " + e.target + "\n"
+						+ "클릭한 x좌표 : " + e.pageX + "\n"
+						+ "클릭한 y좌표 : " + e.pageY + "\n"
+						+ "screen x좌표 : " + e.screenX + "\n"
+						+ "screen y좌표 : " + e.screenY + "\n"
+						+ "클릭 버튼 : " + e.button;
+					alert(str);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div style="width: 300px; height: 300px; background-color: yellow;"></div>
+		<br>
+		<button type="button">버튼</button>
+	</body>
+</html>

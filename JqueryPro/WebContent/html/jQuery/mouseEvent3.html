@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				
+				$('img').css("width", "150");
+				
+				$("img").on({
+					
+					mouseover : function(e){
+						e.target.src = "https://www.rbjmconsulting.net/wp-content/uploads/2019/11/new-300x300.png"
+					}
+					, mouseout : function(e){
+						e.target.src = "https://dummyimage.com/300.png/09f/fff";
+					}
+					, dblclick : function(e){
+						$(this).css("display","none");
+						
+						var cnt = 0;
+						
+						for(var i=0; i < $('img').length; i++){
+							
+						    if($('img')[i].style.display == "none") cnt++
+						    console.log(cnt);
+						}
+						
+						if(cnt == 3){
+							$('button').css("display", "");
+						}
+					}
+				});
+				
+				//홈페이지로 이동 불가
+				$("a").click(function(e){
+					e.preventDefault();
+				});
+			});
+			
+			function allimages(){
+				for(var i=0; i < $('img').length; i++){
+				    $('img')[i].style.display = "";
+				    $('button').css("display", "none");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<img alt="" src="https://dummyimage.com/300.png/09f/fff">
+			<img alt="" src="https://dummyimage.com/300.png/09f/fff">
+			<img alt="" src="https://dummyimage.com/300.png/09f/fff">
+			<br>
+			<button type='button' onclick='allimages()' style="display: none;">보이기</button>
+			<hr>
+			<a href="http://www.naver.com/">네이버 ㄱㄱ</a>
+			
+		</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
