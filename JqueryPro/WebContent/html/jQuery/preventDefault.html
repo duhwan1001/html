@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				
+				$("a").click(function(e){
+					var age = prompt("나이를 입력하세요");
+					if(age < 15){
+						//event.preventDefault(); -- 이것도 가능함. event가 내장함수
+						e.preventDefault();
+						alert("15세 이상만 네이버로 이동 가능합니다.")
+					}
+				})
+			});
+		</script>
+	</head>
+	<body>
+		<p><a id="link" href="http://www.naver.com">네이버로 이동</a></p>
+	</body>
+</html>

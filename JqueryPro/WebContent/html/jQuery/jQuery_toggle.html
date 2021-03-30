@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			div {
+				border: 3px solid red;
+			}
+		</style>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#btnHide").click(function(){
+					//$("p").hide();
+					//$("p").fadeIn();
+					$("p").slideDown();
+				});
+				
+				$("#btnShow").click(function(){
+					//$("p").show();
+					//$("p").fadeOut();
+					$("p").slideUp();
+				});
+				
+				$("#btnToggle").click(function(){
+					//$("div").toggle();
+					$("p").slideToggle();
+				});
+				
+				$("#btnFadeTo").click(function(){
+					$("div").fadeTo(2000, 0.3);
+				});
+				
+				$("#btnAnimate").click(function(){
+					$("div").animate({left: '250px', height: '+=150px'})
+					// ==> $("#tmp") 의 포지션이 static이면 안됨
+				});
+			
+			});
+			
+		</script>
+	</head>
+	<body>
+		<p>이 영역은 누르면 사라졌다가 다시 나타납니다</p>
+		<button type="button" id="btnHide">hide</button>
+		<button type="button" id="btnShow">show</button>
+		<br>
+		<br>
+		<button type="button" id="btnToggle">toggle</button>
+		<button type="button" id="btnFadeTo">fadeTo</button>
+		<button type="button" id="btnAnimate">Animate</button>
+		<br>
+		<br>
+		<div>
+			안녕하십니까?
+			<br>
+			안녕히 가십시오.
+		</div>
+	</body>
+</html>
