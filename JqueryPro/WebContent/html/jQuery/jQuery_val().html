@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#search").click(function(){
+					//$(":text")
+/* 					var userName = $("#userName").val(); // value값을 return
+					alert(userName); */
+					
+/* 					var getGender = $("[name=gender]:checked").val();
+					var gender = "";
+					alert(getGender);
+					if(getGender == "M"){
+						gender == "남자";
+					} else if(getGender == 'F'){
+						gender == "여자";
+					}
+					alert(gender); */
+					
+/* 					var getArea = $("#area").val();
+					alert(getArea);
+					
+					var getJob = $("#job option:selected").text()
+					alert(getJob);
+ */					
+					var str = ""
+							+ "이름" + $("#userName").val() + "\n"
+							+ "성별" + + "\n"
+							+ "소개" + $("#area").val() + "\n"
+							+ "직업" + $("#job option:selected").text();
+ 
+ 					alert(str);
+				});		
+				
+				$("#changeName").click(function(){
+					$("#userName").val("홍길동");
+					
+					document.getElementById("female").checked = "checked";
+					
+					
+				});
+			});
+		</script>
+	</head>
+	<body>
+		이름 <input type="text" value="아이유" id="userName">
+		
+		<br>
+		
+		성별  <input type="radio" id="male" name="gender" value="M">
+			<label for="male">남자</label> 
+			<input type="radio" id="female" name="gender" value="F">
+			<label for="female">여자</label>
+			
+		<br>
+		
+		소개 <textarea rows="10" cols="22" id="area"></textarea>
+		
+		<br>
+		
+		직업 <select id="job">
+				<option value="programer">프로그래머</option>
+				<option value="soldier">군인</option>
+				<option value="welder">용접공</option>
+				<option value="part-time">알바생</option>
+				<option value="noJob">백수</option>
+			</select>
+			
+		<br>
+		
+		<button type="button" id="search">조사하기</button> <button type="button" id="changeName">이름변경</button>
+		
+		<hr>
+		
+		<div>
+			출력: <span></span>
+		</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+

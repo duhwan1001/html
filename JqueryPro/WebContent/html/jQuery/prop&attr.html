@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+					
+				$("#selectAll").click(function(){
+					// '전체선택' 체크박스가 체크되어있는지 확인
+					var isChecked = $(this).prop("checked");
+					
+					if(isChecked == true){
+						// '전체선택' 체크박스가 체크 되어 있다면 다른박스 체크
+						$("#selectAll ~ :checkbox").prop("checked", true);
+					} else {
+						// '전체선택' 체크박스가 체크 되어 있지 않다면 체크 해제
+						$("#selectAll ~ :checkbox").prop("checked", false);
+					}
+					
+					
+					
+				});
+			});
+		</script>
+	</head>
+	<body>
+		체크박스 : 
+		<input type="checkbox" id="check" checked="checked">
+		<br>
+		라디오 : 
+		<input type="radio" id="male" name="gender" value="M" checked="checked">
+		<label for="male">남자</label> 
+		<input type="radio" id="female" name="gender" value="F">
+		<label for="female">여자</label>
+		<br>
+		리스트박스 : 
+		<select>
+			<option>하나</option>
+			<option selected="selected">둘</option>
+			<option>셋</option>
+			<option>넷</option>
+			<option>다섯</option>
+		</select>
+		<br>
+		(readonly) : 
+		<input readonly="readonly" value="가나다" id="readText">
+		<br>
+		(disbaled) : 
+		<button type="button" disabled="disabled">실행</button>
+		<button type="button">attr확인</button>
+		<button type="button">prop확인</button>
+		<hr>
+		체크박스(전체선택/해제) :
+		<br>
+		<input type="checkbox" id="selectAll"><label for="selectAll">전체선택</label>
+		<input type="checkbox" id="1"><label for="1">1</label>
+		<input type="checkbox" id="2"><label for="2">2</label>
+		<input type="checkbox" id="3"><label for="3">3</label>
+		<input type="checkbox" id="4"><label for="4">4</label>
+		<input type="checkbox" id="5"><label for="5">5</label>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

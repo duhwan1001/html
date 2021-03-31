@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				
+				$('img').css("width", "150px").css("height", "150px");
+				
+				$("#clickme").click(function(){
+/* 					var str = $("#300id").attr("src");
+					// ==> "../../images/300.png"
+					
+					var arr = str.split("/");
+					// ==> ["..", "..", "images", "300.png"]
+					
+					var fileName = arr[arr.length-1];
+					// ==> "300.png"
+					
+					$("#300id").attr("title", fileName); */
+					
+					// case1) for문 사용
+					// var objs = $("img")
+					// for(var i=0){}
+					
+					
+					// case2) each() 사용
+					$("img").each(function(){
+						//console.log(this);
+						var src = $(this).attr("src");
+						var arr = src.split("/")
+						var fileName = arr[arr.length-1];
+						$(this).attr("title", fileName);
+					});
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<img alt="300" src="../../images/300.png" id="300id">
+		<img alt="fff" src="../../images/fff.png">
+		<img alt="spotify" src="../../images/spotify.png">
+		<br>
+		<button type="button" id="clickme">클릭하기</button>
+	</body>
+</html>

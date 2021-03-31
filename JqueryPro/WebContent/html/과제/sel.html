@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				
+				$("#ahref1").click(function(){
+					$("#imgZone").show("<img alt='300' src='../../images/300.png'>");
+				});
+				
+				$("#ahref2").click(function(){
+					alert("작동중2");
+				});
+				
+				$("#ahref3").click(function(){
+					$("#imgZone").append("왜안돼");
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<h1>교재목록</h1>
+		<ul>
+			<li><a id="ahref1" href="">jQuery교재</a></li>
+			<li><a id="ahref2" href="">jQuery교재</a></li>
+			<li><a id="ahref3" href="">jQuery교재</a></li>
+		</ul>
+		
+		<hr>
+		<div id="imgZone">
+			<img alt="" src="../../images/300.png">
+		</div>
+	
+	</body>
+</html>
