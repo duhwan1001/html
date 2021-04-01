@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<style>
+			img.tmp {
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+		<script>
+			$(document).ready(function(){
+				
+				var imgRoot = "../../images/" // 전역변수로 이미지 루트 지정
+				
+				$("p").click(function(){
+					
+					/* var addImg = $("<img>");
+					
+					$(this).append(addImg);
+					$("[title='300']").attr("src", "../../images/300.png");
+					$("[title='spotify']").attr("src", "../../images/spotify.png");
+					$("[title='ytmusic']").attr("src", "../../images/ytmusic.png"); */ // 내 풀이
+					
+					var fileName = $(this).attr("title"); // $ p태그
+					var strAlt = $(this).text();
+					
+					//이미지 만들어서
+					//이미지 생성 case1)
+					//var img = $("<img>"); // <img>
+					// img.attr("src", fileName); // <img src = "flowers.jpg">
+					//img.attr("src", imgRoot + fileName); // img
+					
+					//이미지 생성 case2)
+					var img = $("<img>", {
+						"src" : imgRoot + fileName
+						,"alt" : strAlt
+						,"class" : "tmp"
+					});
+			
+					//p의 자식으로 추가
+					$(this).append(img);
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<h1>이미지 추가 영역</h1>
+			<hr>
+			<p title="300.png">300x300</p>
+			<p title="spotify.png">spotify</p>
+			<p title="ytmusic.png">ytmusic</p>
+			<p><input type="hidden" value="hiddenEx">variable</p>
+		</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				
+				$('div').css({"height" : "100px", "width" : "500px" ,"margin" : "5px" , "border" : "1px solid black"});
+				
+				$("button").click(function(){
+					
+					var str = "";
+					var btnId = $(this).attr("id");
+					
+					if(btnId == "btnCase1"){
+						//$('li.2-1').closest('ul')
+						$('li.2-1').closest('ul').css("background-color", "red");
+						//red
+						str = "$('li.2-1').closest('ul').css('background-color', 'red');"
+					} else if(btnId == "btnCase2"){
+						$('li.2-1').closest('li').css("background-color", "yellow");
+						str = "$('li.2-1').closest('li').css('background-color', 'yellow');"
+					} else if(btnId == "btnCase3"){
+					} else if(btnId == "btnCase4"){
+					}
+					
+					$("#divScript").text(str);
+				});
+			});
+		</script>
+	</head>
+	<body>
+	<button type="button" id="btnCase1">case1</button>
+	<button type="button" id="btnCase2">case2</button>
+	<button type="button" id="btnCase3">case3</button>
+	<button type="button" id="btnCase4">case4</button>
+	<div id="divScript">
+	</div>
+		<ul class="1" id="one">
+			<li class="1">1</li>
+				<li class="2" id="two">2
+					<ul class="2-1">
+						<li class="2-1">2-1</li>
+							<li class="2-2">2-2
+								<ul class="2-2-1">
+									<li class="2-2-1">2-2-1</li>
+									<li class="2-2-2">2-2-2</li>
+									<li class="2-2-3">2-2-3</li>
+								</ul>
+							</li>
+						<li class="2-3">2-3</li>
+					</ul>
+				</li>
+			<li class="3">3</li>
+		</ul>
+		
+	</body>
+</html>

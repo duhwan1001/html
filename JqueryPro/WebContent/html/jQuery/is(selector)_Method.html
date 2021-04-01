@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+/* 				$("p").click(function(){
+					// 부모가 div이면 alert() 주기
+					if($(this).parent().is("div")){ //parent가 div인가?
+						alert("부모가 div입니다.");
+					}
+				}); */
+				
+				$("p").click(function(){
+					if($(this).parent().is("div")){
+						var appended = $(this).clone().appendTo(this.parent());
+						$(appended).css("color","red");
+					} else {
+						alert("작업대상이 아닙니다.")
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<p>클릭하세요</p>
+		</div>
+		<p>클릭하세요</p>
+		
+		<hr>
+		
+		<div style="border: 3px solid black">
+			<p>무궁화 꽃이 피었습니다</p>
+		</div>
+		<p>무궁화 꽃이 피었나</p>
+		<div style="border: 3px solid black">
+			<p>나보기가 역겨워 가실때에는</p>
+		</div>
+	</body>
+</html>
