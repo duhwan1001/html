@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){		
+				
+				$("span:contains(jQuery)").css("border", "3px solid blue"); // 대소문자가 구분된다.
+				$("span:not(:contains(jQuery))").css("border", "3px solid red"); //jQuery 글자가 포함되지 않은 span
+				$("div:has(span)").css("border", "3px solid green"); //span 가지고 있는 div
+				$("div:empty").css("border", "3px solid pink"); // 아무것도 없는 div
+				$("div span").css("color", "blue");
+				$("div:parent").css({"border" : "3px solid aqua" , "font-weight" : "bold"}); // 자식이 있는 div 글자 굵게
+				
+			});
+		</script>
+		<style>
+			div {
+				width: 500px; height: 30px; border: 1px solid green;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div><br>
+		<div>
+			헬로우~~
+			<span>오늘도 즐겁게~열심히!</span>
+		</div>
+		<br>
+		<p>
+			Hello jQuery
+			<span>Thanks jQuery</span>
+		</p>
+		<br>
+		<div>jquery</div>
+		<br>
+		<span>쉬운 jQuery</span>
+		<div></div><br>
+		<hr color="blue"><br>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

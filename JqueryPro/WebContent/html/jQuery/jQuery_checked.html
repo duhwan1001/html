@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#sendIt").click(function(){
+					
+					// 1. 내풀이
+/* 					var str = "";
+					var result = "";
+					$("input[type='checkbox']").each(function(){
+ 					    if(this.checked == true){
+ 					    	$("#result").empty();
+ 					    	str += this.value + ",";
+ 					    	result = str.slice(0,-1)
+ 					    };
+ 					});
+					$("#result").append(result);
+					alert("result : " + result); */
+					
+					/////////////////////////
+					
+					// 2. 쌤 풀이 1 -- each문 substr 활용
+/* 					var str = "";
+					$(":checked").each(function(idx, item){
+						var val = $(this).val(); // 낚시 or 등산
+						str += val + " / ";
+					});
+					str = str.substr(0, str.length-2);
+					alert(str)
+					$("#result").html(str); */
+					
+					////////////////////////
+					
+					// 3. 쌤 풀이 2 -- each문 idx 활용
+/* 					var str = "";
+					$(":checked").each(function(idx, item){
+						var val = $(this).val(); // 낚시 or 등산
+						
+						if(idx == 0) str += val;
+						else str += ", " + val;
+					});
+					alert(str)
+					$("#result").html(str); */
+					
+					// 4. 체크박스의 value가 코드값인 경우
+/* 					$(":checked").each(function(idx){
+						// 체크박스의 id와 라벨의 for가 연결되어 있으므로(값이 같음)
+						var tmpId = $(this).attr("id");
+						var val = $("label[for=" + tmpId + "]").text();
+						// ==> $("label[for=hobby]")
+						
+						if(idx ==0) str += val;
+						else str += ", " + val;
+					}); */
+					
+					// 5. 체크박스의 value가 코드값인 경우 - 형제요소 찾기
+					// 체크박스 바로 뒤에 라벨이 위치함
+					$(":checked").each(function(idx){
+						var val = "";
+						console.log
+					}
+						var tmpId = $(this).attr("id");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		취 미 : 
+		<input type="checkbox" id="travel" name="selec" value="여행" checked="checked">
+		<label for="selec">여행</label>
+		<input type="checkbox" id="boardJang" name="selec" value="장기">
+		<label for="selec">장기</label>
+		<input type="checkbox" id="boardDuk" name="selec" value="바둑">
+		<label for="selec">바둑</label>
+		<input type="checkbox" id="book" name="selec" value="독서">
+		<label for="selec">독서</label>
+		<input type="checkbox" id="fishing" name="selec" value="낚시">
+		<label for="selec">낚시</label>
+		<br>
+		<br>
+		<button type="button" id="sendIt">전송</button>
+		<br>
+		<br>
+		<span>선택결과 : <span id="result"></span></span>
+	</body>
+</html>

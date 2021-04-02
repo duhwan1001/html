@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				
+				$("#btnHidden").click(function(){
+					$(":hidden", "#ex").each(function(){
+						alert($(this).html());
+						console.log(this);
+					});
+				});
+				
+				$("#btnVisible").click(function(){
+					$(":visible", "#ex").each(function(){
+						alert($(this).html());
+						console.log(this);
+					});
+				});
+				
+				////////////////////
+				
+				$("#btn1").click(function(){
+					$(":hidden", "#ex2").each(function(){
+						var str = "태그 : " + $(this).prop("tagName") + "\n" +
+									"유형 : " + this.type + "\n" +
+									"값 : " + this.value + "\n" +
+									"html : " + this.html;
+						alert(str);
+						console.log(this);
+					});
+				});
+				
+				$("#btn2").click(function(){
+					$(":visible", "#ex2").each(function(){
+						var str = "태그 : " + $(this).prop("tagName") + "\n" +
+									"유형 : " + this.type + "\n" +
+									"값 : " + this.value + "\n" +
+									"html : " + this.html;
+						alert(str);
+						console.log(this);
+					});
+				});
+				
+	
+		</script>
+	</head>
+	<body>
+		<div id="ex">
+			<p>보이는 문단</p>
+			<p style="visibility: hidden;">숨겨진 문단</p>
+			<p style="display: none;">자리를 차지 하지 못한 문단</p>
+			<p style="opacity: 0;">투명한 문단</p>
+			<hr>
+			<button id="btnHidden">hidden요소</button> <button id="btnVisible">visible요소</button>
+		</div>
+		<hr>
+		<div id="ex2">
+			ID : 
+			<input type="text" value="kdh"> <span style="display: none;">ID가 중복됩니다</span>
+			<br>
+			이름 : 
+			<input type="text" value="김두화"> <span style="display: none;">이름이 중복됩니다</span>
+			<br>
+			성별 : 
+			<input type="radio" id="genderMale" name="gender" checked="checked">
+			<label for="gender">남자</label>
+			<input type="radio" id="genderFemale" name="gender">
+			<label for="gender">여자</label>
+			<br>
+			<button type="button" id="btn1">hidden요소</button>
+			<button type="button" id="btn2">visible요소</button>
+			
+			<input type="hidden" id="userAge" name="userAge" value="23">
+		</div>
+		<hr>
+		<div id="ex3">
+			<input type="text"><br>
+			<input type="password"><br>
+			<select name="disSelect" disabled="disabled">
+				<option>Option1</option>
+				<option>Option2</option>
+				<option>Option3</option>
+			</select>
+			<br>	
+			<textarea rows="10" cols="22">
+				Text
+			</textarea>
+			<br>
+			<input type="button" value="확인" disabled="disabled">
+			<br>
+			
+			
+		</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

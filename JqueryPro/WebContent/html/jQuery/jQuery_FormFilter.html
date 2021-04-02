@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				var str = "";
+				$("#sendIt").click(function(){
+					$(":selected").each(function(){
+					    str += this.value;
+					});
+					$("#result").html(str);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form>
+			봄소식:
+			<select name="spring" id="spring" size="6" multiple="multiple">
+				<option>개나리</option>
+				<option selected="selected">진달래</option>
+				<option>민들레</option>
+				<option selected="selected">벚꽃</option>
+				<option>목련</option>
+				<option>철쭉</option>
+			</select><br>
+			<button type="button" id="sendIt">전송</button>
+			<div>
+				선택 결과 : <span id="result"></span>
+			</div>
+		</form>
+	</body>
+</html>
