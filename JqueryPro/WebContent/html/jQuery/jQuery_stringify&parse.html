@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script>
+			var arr = {name: "홍길동"
+				,birth: "1425-12-14"
+				,age: 30
+				,hobby: ["무술", "검술", "독서"]
+				,address: {
+					city : "대전"
+					, gu : "중구"
+					, dong : "대흥동" }
+				};
+			
+			$(document).ready(function(){
+
+				$("#test").click(function(){
+					// 1) 1차변환
+					// object를 string으로 변환 -- JSON.stringify(obj)
+					var strTmp = JSON.stringify(arr)
+					$("#firstT").text(strTmp);
+					
+					// 2) 2차변환
+					// string을 object로 변환 -- JSON.parse(obj);
+					var parseTmp = JSON.parse(strTmp);
+					$("#secondT").text(parseTmp) // .html()로는 안나옴
+					
+					// 3) 등등
+					//var strAddr = JSON.stringify(parseTmp.address)
+					
+					//이름
+					$("#name").text(parseTmp.name);
+					
+					//주소
+					//$("#addr").text(strAddr);	
+					$("#addr").text(parseTmp.address.city + " " + parseTmp.address.gu + " " + parseTmp.address.dong);
+					
+					//취미
+					var strHobby = "";
+					for(var i=0; i<parseTmp.hobby.length; i++){
+						strHobby += "(" + parseTmp.hobby[i] + "), ";
+					}
+					strHobby = strHobby.substr(0, strHobby.length-2);
+					
+					$("#hobby").text(strHobby); // .html()을 사용하면 , 가 출력되지 않음
+					
+					//생년월일
+					var date = new Date(parseTmp.birth)
+					$("#birth").text(date);
+					
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<button type="button" id="test">JSON 변환 테스트</button>
+		<h1>1차변환(obj > str) : </h1><span id="firstT"></span>
+		<h1>2차변환(str > obj) : </h1><span id="secondT"></span>
+		<h1>이름 : </h1><span id="name"></span>
+		<h1>주소 : </h1><span id="addr"></span>
+		<h1>취미 : </h1><span id="hobby"></span>
+		<h1>생년월일 : </h1><span id="birth"></span>
+	</body>
+</html>

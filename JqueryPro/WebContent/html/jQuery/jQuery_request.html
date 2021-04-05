@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	</head>
+	<body>
+		<h3>XMLHttpsRequest 사용하기</h3>
+		<button type="button" id="btnGetW">Get 비동기 호출</button>
+		<button type="button" id="btnGetS">Get 동기 호출</button>
+		<br>
+		<button type="button" id="btnJQ">JQ AJAX 호출</button>
+		<hr>
+		<div id="divResult" style="border: 1px solid; height: 300px"></div>
+		<hr>
+		<form action="" method="get" id="fm">
+			아이디 : <input type="text" name="userName"> <!-- 서버로 전송할때 name 필수 -->
+			패스워드 : <input type="password" name="userPw">
+		</form>
+	</body>
+	<script>
+		$("#btnJQ").click(function(){
+			//var obj = {userId: "test01", userPw: "12345678"}
+			var obj = $("#fm").serialize(); // form안에 있는 정보를 가져온다.
+			$.ajax({
+				url: "html1.ex1.html" // 호출할 주소(url)
+				, type: "get" // 데이터 전송 방식(method) - "get" or "post"
+				//, data: {userId: "test01", userPw: "12345678"} // 전송할 데이터 - 형식1
+				//, data: $("#fm").serialize();
+				, data: obj
+				, dataType: "html" // 결과로 받은 데이터의 형식(서버로부터 받은 데이터 유형) = html, json, text, xml
+				, success: function(data){ // 성공 시 처리할 작업
+					alert("성공");
+					// data를 가공해 화면에 세팅 및 처리
+					$("#divResult").html(data);
+					
+				}
+				, error: function(xhr){
+					console.error("실패");
+					//xhr에 오류코드랑 오류메시지가 포함되어 있음
+				}
+			})
+		});
+	
+		$("#btnGetW").click(function(){
+			// XMLHttpRequest 객체로 호출하기
+			// 1) XMLHttpRequest 객체 생성하기
+			var xhttp = new XMLHttpRequest();
+			// 2) 서버(목적지)에 연결하기 - open(method, url, async);
+			var url = "html1.ex1.html";
+			xhttp.open("GET", url, true);
+			// 3) 서버(목적지)에 전송하기 - send();
+			xhttp.send();
+			
+			// 4) 결과처리하기
+			xhttp.onreadystatechange = function(){ // 개발자 모드 컴파일에러 안잡힘 ^ㅣ발
+				if(this.readyState == 4 && this.status == 200){ // 서버에서 요청 처리가 성공인 상태
+					// 정상 처리 되었을때 화면 처리 할 내용
+					console.log("if문 탐");
+					$("#divResult").html(this.responseText);
+				} 
+			}
+		});
+		
+		$("#btnGetS").click(function(){
+			// XMLHttpRequest 객체로 호출하기
+			// 1) XMLHttpRequest 객체 생성하기
+			var xhttp = new XMLHttpRequest();
+			// 2) 서버(목적지)에 연결하기 - open(method, url, async);
+			var url = "html1.ex1.html";
+			xhttp.open("get", url, false);
+			// 3) 서버(목적지)에 전송하기 - send();
+			xhttp.send();
+			
+			// 4) 결과처리하기
+			xhttp.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){ // 서버에서 요청 처리가 성공인 상태
+					// 정상 처리 되었을때 화면 처리 할 내용
+					console.log("if문 탐");
+					$("#divResult").html(this.responseText);
+				} 
+			};
+		});
+	</script>
+</html>
