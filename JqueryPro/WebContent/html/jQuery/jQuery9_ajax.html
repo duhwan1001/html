@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script src="/JqueryPro/js/jQuery9_ajax.js"></script>
 		<style>
 			table td:hover , th:hover{
 				background: red;
@@ -26,117 +27,13 @@
 			<button type="button" onclick="fnJsonObj()">JSON Obj</button>
 			<button type="button" onclick="fnJsonArr()">JSON Arr</button>
 			<button type="button" onclick="fnJsonList()">JSON List</button>
+			<hr>
+			<button type="button" onclick="fnXmlSinger()">XML(가수목록)</button>
+			<button type="button" onclick="fnXmlTitle()">XML(제목목록)</button>
+			<button type="button" onclick="fnXmlTable()">XML(Table)</button>
 		</form>
 		<div id="result"></div>
 	</body>
-	<script>
-		function fnGet(){
-			// sumbit 실행
-			var fm = document.getElementById("fm"); // form
-			fm.action = "../sample/html1.ex1.html";
-			fm.method = "post";
-			fm.submit();
-		}
-		
-		function fnAjax(){
-			$.ajax({
-				url : "jQuery9.intro.html"
-				,type : "get"
-				//,data :
-				//,dataType :
-				,success : function(data){
-					$("#result").text(data);
-				}
-				,error : function(){
-					
-				}
-			});
-		}
-		
-		function fnText(){
-			$.ajax({
-				//url : "../sample/TextFile.txt"				
-				url : "/JqueryPro/html/sample/TextFile.txt" // WebContent가 루트임
-				//,TYPE : "get"
-				//,date : {}
-				,dateType : "text" // 안써도 무관함
-				,success : function(data){
-					$("#result").html(data);
-				}
-				,error : function(){
-					console.error("fnText 에러");
-				}
-			})
-		}
-		
-		function fnJsonObj(){
-			$.ajax({
-				url : "/JqueryPro/html/sample/data_json_obj.txt"
-				,dataType : "json" // 안써주면 일반 Text타입으로 인식함.
-				,success : function(data){
-					console.log(data);
-					console.log(data.name);
-					// div에 이름 : ~, 나이 : ~,
-					
-					var str = "";
-					str += "이름 : " + data.name + "<br>" // text로 넣을때는 \n || html로 넣을때는 <br>
-						+ "나이 : " + data.age + "<br>"
-						+ "성별 : " + data.gender + "<br>"
-						+ "직업 : " + data.job
-						
-					$("#result").html(str);
-					
-				}
-			});
-		}
-		
-		function fnJsonArr(){
-			$.ajax({
-				url : "/JqueryPro/html/sample/data_json_arr.txt"
-				,dataType : "json"
-				,success : function(data){
-					console.log(data);
-					
-					var str = "<ol>";
-					/* for(var i=0; i<data.length; i++){
-						str += "<li>" + data[i] + "</li>"
-					} */
-					$.each(data, function(idx){
-						str += "<li>" + data[idx] + "</li>";
-					})
-					str += "</ol>";
-					
-					$("#result").html(str);
-				}
-			})
-		}
-		
-		function fnJsonList(){
-			$.ajax({
-				url : "/JqueryPro/html/sample/data_json_list.txt"
-				,dataType : "json"
-				,success : function(data){
-					var str = "<table border='1' style='text-align: center;'>"
-								+ "<th></th><th>이름</th><th>나이</th><th>성별</th><th>직업</th>"
-				
-					$.each(data, function(idx){
-						str += "<tr>"
-							+ "<td>" + (idx+1) + "</td>"
-							+ "<td>" + data[idx].name + "</td>"
-							+ "<td>" + data[idx].age + "</td>"
-							+ "<td>" + data[idx].gender + "</td>"
-							+ "<td>" + data[idx].job + "</td>"
-					})
-					str += "</tr>" + "</table>"
-					 
-					$("#result").html(str);
-				}
-				,error : function(){
-					console.error("fnJsonList 에러");
-				}
-			});
-		}
-	</script>
 </html>
 
 

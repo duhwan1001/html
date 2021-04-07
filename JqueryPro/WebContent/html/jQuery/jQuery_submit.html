@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	</head>
+	<body>
+		<form id="fm">
+			이름 : <input type="text" id="userName" name="userName">
+			<br>
+			나이 : <input type="text" id="userAge" name="userAge">
+			<br><br>		
+			<button type="submit">submit</button>
+			<button type="button" onclick="fnGet()">get버튼</button>
+			<button type="button" onclick="fnPost()">post버튼</button>
+			<hr>
+		</form>
+		<div id="divResult"></div>
+	</body>
+	<script type="text/javascript">
+		function fnGet(){
+			var fm = document.getElementById("fm");
+			fm.action = "jQuery_submit_result.html"
+			fm.method = "get";
+			fm.submit();
+		}
+		
+		function fnPost(){
+			var fm = document.getElementById("fm");
+			fm.action = "jQuery_submit_result.jsp"
+			fm.method = "post";
+			fm.submit();
+		}
+		
+	</script>
+</html>
+
