@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script src="/JqueryPro/js/myutil.js"></script>
 	</head>
 	<body>
 		<p>안녕하세요 <span id="spUserName"></span>씨</p>
@@ -21,9 +22,10 @@
 		var arr = params.split("&"); // ["userName=Name" , "userAge=23"]
 		// arr[0];
 		// arr[0].split("="); // = ["userName","Name"]
-		userName = arr[0].split("=")[1]; // Name
-		
-		userAge = arr[1].split("=")[1]; // 23
+		//userName = arr[0].split("=")[1]; // Name
+		//userAge = arr[1].split("=")[1]; // 23
+
+		userName = getValue(url, "userName");
 		
 		document.getElementById("spUserName").innerHTML = userName; 
 		document.getElementById("spUserAge").innerHTML = userAge;
