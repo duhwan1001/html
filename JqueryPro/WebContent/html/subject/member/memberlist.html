@@ -5,7 +5,27 @@
 		<title>Insert title here</title>
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script>
-			
+			$(document).ready(function(){
+				$("#btnSearch").click(function(){
+					$.ajax({
+						url : "/JqueryPro/MemberServlet"
+						,type : "post"
+						,data : ""
+						,dataType : "json"
+						,success : function(data){
+							console.log(data.responseText);
+							console.log(data);
+							alert("성공");
+						}
+						,error : function(xhr){
+							console.log(xhr);
+							console.log(xhr.responseText);
+							console.log(xhr.status);
+							alert("오류발생");
+						}
+					});
+				});
+			});
 		</script>
 	</head>
 	<body>
@@ -16,7 +36,7 @@
 			이름 : <input type="text" id="userName" name="userName"><br>
 			전화번호 : <input type="text" id="userHp" name="userHp"><br>
 			생년월일 : <input type="text" id="userBirth" name="userBirth"><br>
-			<button type="button">조회</button>
+			<button type="button" id="btnSearch">조회</button>
 		</div>
 		<!-- 검색결과 영역 -->
 		<div>
