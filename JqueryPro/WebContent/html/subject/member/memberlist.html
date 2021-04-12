@@ -4,29 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-		<script>
-			$(document).ready(function(){
-				$("#btnSearch").click(function(){
-					$.ajax({
-						url : "/JqueryPro/MemberServlet"
-						,type : "post"
-						,data : ""
-						,dataType : "json"
-						,success : function(data){
-							console.log(data.responseText);
-							console.log(data);
-							alert("성공");
-						}
-						,error : function(xhr){
-							console.log(xhr);
-							console.log(xhr.responseText);
-							console.log(xhr.status);
-							alert("오류발생");
-						}
-					});
-				});
-			});
-		</script>
+		<script src="/JqueryPro/js/memberlist.js"></script>
 	</head>
 	<body>
 		<h3>회원목록</h3>
@@ -34,29 +12,30 @@
 		<div>
 			ID : <input type="text" id="userId" name="userId"><br>
 			이름 : <input type="text" id="userName" name="userName"><br>
-			전화번호 : <input type="text" id="userHp" name="userHp"><br>
-			생년월일 : <input type="text" id="userBirth" name="userBirth"><br>
 			<button type="button" id="btnSearch">조회</button>
+			<button type="button" id="d">조회</button>
 		</div>
 		<!-- 검색결과 영역 -->
-		<div>
-			<table border="1">
+		<div class="result">
+		목록
+			<colgroup>
+				<col style="width:100px;">
+				<col style="width:auto;">
+			</colgroup>
+		<table border="1px solid;" id="tbResult">
+			<thead>
 				<tr>
-					<th>번호</th>
 					<th>ID</th>
 					<th>이름</th>
-					<th>전화번호</th>
-					<th>생년월일</th>
 				</tr>
+			</thead>
+			<tbody>
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td>검색버튼을 클릭하세요</td>
 				</tr>
-			</table>
-		</div>
+			</tbody>
+		</table>
+	</div>
 		<!-- 영역 -->
 		<div>
 			<button type="button">신규 등록</button>
