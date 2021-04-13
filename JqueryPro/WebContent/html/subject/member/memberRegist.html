@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				// [중복검사] 클릭 이벤트
+				
+			}
+			
+			function chkId(){
+				var memId = $("#memId").val();
+				//
+				if(isEmpty(memId)){
+					alert("ID 값이 입력되지 않았습니다.");
+					$("#memId").focus();
+					$("#spMemId").show();
+					return;
+				}
+				
+				// 유효성 검사 - 영어소문자와 숫자로 구성. 3글자 이상 10글자 이하
+				var regExp = /^[a-z0-9{3,10}$]/;
+				if(regExp.test(memId)){
+					alert("ID 값이 유효되지 않았습니다.");
+					$("#memId").focus();
+					$("#spMemId").show();
+					return;
+				}
+				
+				// DB에서 중복검사 수행
+				$.ajax({
+					url : "~"
+					,type : "post"
+					,data : {"memId" : memId, "flag" : "CHKID"}
+					,dataType : "json"
+					,success : function(data){
+						console.log(data);
+						$("#spMemId").hide();
+					}
+					,error : function(xhr){
+						console.error(xhr);
+						alert("ID 중복 검사 중 오류가 발생했습니다.");
+					}
+				})
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+	
+
+
+		  <!-- Modal -->
+		  <div class="modal fade" id="myModal" role="dialog">
+		    <div class="modal-dialog">
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title">주소 검색</h4>
+		        </div>
+		        <div class="modal-body">
+		          	시: <select>
+		          		<option selected="selected">선택하세요</option>
+		          		<option>대전</option>
+		          		<option>대구</option>
+		          		<option>서울</option>
+		          		<option>부산</option>
+		          		<option>인천</option>
+		          	</select>
+		          	
+		          	구:<select>
+		          		<option selected="selected">선택하세요</option>
+		          		<option>서구</option>
+		          		<option>중구</option>
+		          		<option>서구</option>
+		          		<option>유성구</option>
+		          	</select>
+		          	
+		          	동:<select>
+		          		<option selected="selected">선택하세요</option>
+		          		<option>관저동</option>
+		          		<option>대흥동</option>
+		          		<option>중촌동</option>
+		          		<option>산성동</option>
+		          	</select>
+		          	<button type="button" id="btnSearch">검색</button>
+		        </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+  
+	
+		<div class="container">
+		  <h2>회원가입 페이지</h2>
+		  <form class="form-horizontal" action="/action_page.php">
+  		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="memId">ID:</label>
+		      <div class="col-sm-6">          
+		        <input type="text" class="form-control" id="memId" placeholder="Enter ID" name="memId">
+		        	<button class="form-control" type="button" id="btnMemId" onclick="chkId()">중복검사</button>
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="memName">Name:</label>
+		      <div class="col-sm-10">          
+		        <input type="text" class="form-control" id="memName" placeholder="Enter name" name="memName">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="pwd">Password:</label>
+		      <div class="col-sm-10">          
+		        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="pwd">PasswordConfirm:</label>
+		      <div class="col-sm-10">          
+		        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="birth">BirthDay:</label>
+		      <div class="col-sm-10">          
+		        <input type="date" class="form-control" id="birth" placeholder="Enter birthday" name="birth">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="ADD1">ADD1:</label>
+		      <div class="col-sm-10">          
+		        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+		        <input type="text" class="form-control" id="ADD1" placeholder="Enter ADD1" name="ADD1">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="ADD2">ADD2:</label>
+		      <div class="col-sm-10">          
+		        <input type="text" class="form-control" id="ADD2" placeholder="Enter ADD2" name="ADD2">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="HP">HP:</label>
+		      <div class="col-sm-10">          
+		        <input type="text" class="form-control" id="HP" placeholder="Enter HP" name="HP">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="email">email:</label>
+		      <div class="col-sm-10">
+		        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="email">이메일 수신 동의:</label>
+		      <div class="col-sm-10">
+		        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="job">Job:</label>
+		      <div class="col-sm-10">
+		        <input type="text" class="form-control" id="job" placeholder="Enter job" name="job">
+		      </div>
+		    </div>
+		    
+   		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="LIKE">LIKE:</label>
+		      <div class="col-sm-10">          
+		        <input type="text" class="form-control" id="LIKE" placeholder="Enter LIKE" name="LIKE">
+		      </div>
+		    </div>
+   		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="LIKE">Memorial Type:</label>
+		      <div class="col-sm-10">
+		      	종류:          
+		        <select>
+		        	<option>결혼기념일</option>
+		        	<option>결혼기념일</option>
+		        	<option>결혼기념일</option>
+		        	<option>결혼기념일</option>
+		        	<option>결혼기념일</option>
+		        </select>
+		        날짜:
+		        <input type="text" id="MemorialDate" name="MemorialDate">	
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label class="control-label col-sm-2" for="comment">comment:</label>
+		      <div class="col-sm-10">          
+		        <input type="text" class="form-control" id="comment" placeholder="Enter comment" name="comment">
+		      </div>
+		    </div>
+		    <div class="form-group">        	
+		      <div class="col-sm-offset-2 col-sm-10">
+		        <div class="checkbox">
+		          <label><input type="checkbox" name="remember"> Remember me</label>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="form-group">        
+		      <div class="col-sm-offset-2 col-sm-10">
+		        <button type="submit" class="btn btn-default">Submit</button>
+		      </div>
+		    </div>
+		  </form>
+		</div>
+	</body>
+</html>

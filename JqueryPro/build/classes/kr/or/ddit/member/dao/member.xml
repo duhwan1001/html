@@ -10,7 +10,7 @@
 			MEM_ID
 			,MEM_PASS
 			,MEM_NAME
-			,MEM_BIR
+			,to_char(MEM_BIR, 'yyyy-mm-dd')
 			,MEM_ZIP
 			,MEM_ADD1
 			,MEM_ADD2
@@ -55,25 +55,29 @@
 	</select>
 	
 	<select id="retrieveMemberList" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">
-		SELECT MEM_ID                memId             
-             , MEM_PASS              memPass           
-             , MEM_NAME              memName           
-             , MEM_BIR               memBir            
-             , MEM_ZIP               memZip            
-             , MEM_ADD1              memAdd1           
-             , MEM_ADD2              memAdd2           
-             , MEM_HP                memHp             
-             , MEM_MAIL              memMail           
-             , RECV_EMAIL_YN         recvEmailYn      
-             , MEM_JOB               memJob            
-             , MEM_LIKE              memLike           
-             , MEM_MEMORIAL_TYPE     memMemorialType  
-             , MEM_MEMORIAL_DATE     memMemorialDate  
-             , NVL(MEM_MILEAGE, 0)   memMileage        
-             , MEM_COMMENT           memComment        
-             , MEM_DELETE            memDelete         
-          FROM TB_MEMBER
+		SELECT A.MEM_ID                         memId             
+             , A.MEM_PASS                       memPass           
+             , A.MEM_NAME                       memName           
+             , to_char(A.MEM_BIR, 'yyyy-mm-dd') memBir            
+             , A.MEM_ZIP                        memZip            
+             , A.MEM_ADD1                       memAdd1           
+             , A.MEM_ADD2                       memAdd2           
+             , A.MEM_HP                         memHp             
+             , A.MEM_MAIL                       memMail           
+             , A.RECV_EMAIL_YN                  recvEmailYn      
+             , A.MEM_JOB                        memJob
+             , B.CODE_NAME			            memjobName            
+             , A.MEM_LIKE                       memLike           
+             , A.MEM_MEMORIAL_TYPE              memMemorialType  
+             , A.MEM_MEMORIAL_DATE              memMemorialDate  
+             , NVL(A.MEM_MILEAGE, 0)            memMileage        
+             , A.MEM_COMMENT                    memComment        
+             , A.MEM_DELETE                     memDelete         
+          FROM TB_MEMBER A
+          	 , TB_CODE B
          WHERE 1=1
+         AND B.GROUP_CODE(+) = 'A02'
+         AND A.MEM_JOB = B.CODE(+)
          <isNotEmpty property="memId">
          AND MEM_ID LIKE '%'||#memId||'%'
          </isNotEmpty>

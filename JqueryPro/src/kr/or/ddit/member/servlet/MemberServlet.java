@@ -30,7 +30,7 @@ public class MemberServlet extends HttpServlet {
 		String flag = req.getParameter("flag");
 		
 		try {
-			if (flag.equals("L")) { // 검색
+			if ("L".equals(flag)) { // 검색
 				List<MemberVO> list = retrieveMemberList(req);
 
 				// 브라우저로 전달할 결과를 request에 attribute로 세팅
@@ -38,18 +38,24 @@ public class MemberServlet extends HttpServlet {
 				RequestDispatcher disp = req.getRequestDispatcher("/html/member/memberListResult.jsp");
 				disp.forward(req, resp);
 
-			} else if (flag.equals(flag)) { // 등록
+			} else if ("C".equals(flag)) { // 등록
 				createMember(req);
-			} else if (flag.equals(flag)) { // 단건 조회
+			} else if ("R".equals(flag)) { // 단건 조회
 
-			} else if (flag.equals(flag)) { // 수정
+			} else if ("U".equals(flag)) { // 수정
 
-			} else if (flag.equals(flag)) { // 삭제
+			} else if ("D".equals(flag)) { // 삭제
 
+			} else if ("CHKID".equals(flag)) { // 신규 회원 등록
+				checkMemberId();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void checkMemberId(HttpServlet req) {
+		String memId = req.getpara
 	}
 
 	private void createMember(HttpServletRequest req) throws SQLException {

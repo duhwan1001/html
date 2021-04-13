@@ -12,6 +12,7 @@ public class MemberVO {
 	private String memMail;
 	private String recvEmailYn;
 	private String memJob;
+	private String memJobName;
 	private String memLike;
 	private String memMemorialType;
 	private String memMemorialDate;
@@ -19,6 +20,9 @@ public class MemberVO {
 	private String memComment;
 	private String memDelete;
 	
+	public String getMemJobName() {
+		return memJobName;
+	}
 	public String getMemId() {
 		return memId;
 	}
@@ -69,6 +73,9 @@ public class MemberVO {
 	}
 	public String getMemDelete() {
 		return memDelete;
+	}
+	public void setMemJobName(String memJobName) {
+		this.memJobName = memJobName;
 	}
 	public void setMemId(String memId) {
 		this.memId = memId;

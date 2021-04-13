@@ -1,3 +1,6 @@
+/**
+ *
+ */
 $(document).ready(function(){
 	
 	// 서버로 전달할 데이터 만들기
@@ -35,12 +38,36 @@ $(document).ready(function(){
 		
 		for(var i=0; i<data.length; i++){
 			str += "<tr>"
-				+ "<td>"+ data[i].id +"</td>"
-				+ "<td>"+ data[i].name +"</td>"
+				+ "<td>"+ data[i].memId +"</td>"
+				+ "<td>"+ data[i].memName +"</td>"
+				+ "<td>"+ data[i].memPass +"</td>"
+				+ "<td>"+ data[i].memBir +"</td>"
+				//+ "<td>"+ data[i].memHp +"</td>"
+				+ "<td>"+ formatHp(data[i].memHp) +"</td>"
+				+ "<td>"+ data[i].memMail +"</td>"
+				+ "<td>"+ data[i].memJobName +"</td>"
 				+ "</tr>";
 		}
 		$("#tbResult tbody").html(str);
 	}
 	
+
+	
 	
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
