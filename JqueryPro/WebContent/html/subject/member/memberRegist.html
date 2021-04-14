@@ -4,16 +4,52 @@
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script src="/JqueryPro/js/common/myUtils.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 		<script>
-			$(document).ready(function(){
-				// [중복검사] 클릭 이벤트
+			function makeJobSelect(data){
+				/* // 방법1
+				var strHtml = "";
+				$("#job").html(strHtml); */
+				
+				// 방법2
+				/* $("#job").empty();
+				$("#job").append(ele1);
+				$("#job").append(ele2); */
+				
+				var strHtml = "";
+				for(var i=0; i<data.length; i++){
+					strHtml += "<option value=" + data[i].value + ">" + data[i].name + "</option>"
+					//<option value="07">군인</option>
+				}
+				//
+				$("#job").html(strHtml);
 				
 			}
-			
-			function chkId(){
+		
+			$(document).ready(function(){
+				// 직업코드 조회해서 세팅하기
+				$.ajax({
+					url : "/JqueryPro/CodeServlet"
+					,type : "post"
+					,data : {"groupCode" : "A02"} // 직업코드 조회
+					,dataType : "json"
+					,success : function(data){
+						console.log(data);
+						makeJobSelect(data);
+					}
+					,error : function(xhr){
+						console.log(xhr);
+						console.log(xhr.responseText);
+						console.log(xhr.status);
+						alert("에러");
+					}
+				})
+			});
+		
+			function checkId(){
 				var memId = $("#memId").val();
 				//
 				if(isEmpty(memId)){
@@ -24,26 +60,26 @@
 				}
 				
 				// 유효성 검사 - 영어소문자와 숫자로 구성. 3글자 이상 10글자 이하
-				var regExp = /^[a-z0-9{3,10}$]/;
+				var regExp = /^[a-z0-9{3,10}]$/;
 				if(regExp.test(memId)){
-					alert("ID 값이 유효되지 않았습니다.");
+					alert("ID 값이 유효하지 않습니다.");
 					$("#memId").focus();
-					$("#spMemId").show();
 					return;
 				}
 				
 				// DB에서 중복검사 수행
 				$.ajax({
-					url : "~"
+					url : "/JqueryPro/MemberServlet"
 					,type : "post"
 					,data : {"memId" : memId, "flag" : "CHKID"}
 					,dataType : "json"
 					,success : function(data){
 						console.log(data);
-						$("#spMemId").hide();
+						
 					}
 					,error : function(xhr){
 						console.error(xhr);
+						console.error(xhr.status);
 						alert("ID 중복 검사 중 오류가 발생했습니다.");
 					}
 				})
@@ -107,7 +143,7 @@
 		      <label class="control-label col-sm-2" for="memId">ID:</label>
 		      <div class="col-sm-6">          
 		        <input type="text" class="form-control" id="memId" placeholder="Enter ID" name="memId">
-		        	<button class="form-control" type="button" id="btnMemId" onclick="chkId()">중복검사</button>
+		        	<button class="form-control" type="button" id="btnMemId" onclick="checkId()">중복검사</button>
 		      </div>
 		    </div>
 		    <div class="form-group">
@@ -168,7 +204,10 @@
 		    <div class="form-group">
 		      <label class="control-label col-sm-2" for="job">Job:</label>
 		      <div class="col-sm-10">
-		        <input type="text" class="form-control" id="job" placeholder="Enter job" name="job">
+		        <select type="text" class="form-control" id="job" placeholder="Enter job" name="job">
+		        	<option value="07">군인</option>
+		        	<option value="08">전업주부</option>
+		        </select>
 		      </div>
 		    </div>
 		    

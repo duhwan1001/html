@@ -1,15 +1,12 @@
 /**
  * 
  */
-
-
-
 function isEmpty(val){
 	if(val == undefined) return true;
 	if(val == null) return true;
 	if(val == "null") return true;
 	
-	val = jQuery.trim(Val);
+	val = jQuery.trim(val);
 	if(val.length == 0) return true;
 	
 	return false;
@@ -47,6 +44,6 @@ function formatHp(val){
 	
 	val.replace(/(\d{3})(\d{3,4)(\d{4}) /, "$1-$2-$3");
 	
-	return str;
+	return val;
 	
 }

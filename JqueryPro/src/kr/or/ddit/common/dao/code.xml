@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="code">
+
+	<select id="retrieveCodeList" parameterClass="kr.or.ddit.common.vo.CodeVO" resultClass="kr.or.ddit.common.vo.CodeVO">
+		select 
+			group_code    	groupCode        
+			, group_code_name	groupCodeName      
+			, code            	code    
+			, code_name      	CodeName        
+			, description    	description        
+			, use_yn            useYn
+		from TB_CODE
+		where 1=1
+			<isNotEmpty property="groupCode">
+				and Group_code = #groupCode#
+			</isNotEmpty>
+			<isNotEmpty property="Code">
+				and Group_code = #groupCode#
+			</isNotEmpty>
+		and group_code = #group_code#
+	</select>
+	
+</sqlMap>

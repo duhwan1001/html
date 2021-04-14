@@ -2,7 +2,8 @@
 <%@page import="kr.or.ddit.member.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
+
+[   
 <%
 List<MemberVO> list = (List<MemberVO>)request.getAttribute("list"); // 조회결과를 list로 담아줬었음. = MemberServlet.java 48Line
 
@@ -18,9 +19,9 @@ for(int i=0; i<list.size(); i++){
 		%>,<% 
 	}
 	%>
-		{"memName" : "<%=memName %>" <!-- vo.getMemId() -->
+		{"memName" : "<%=memName %>"
 		, "memId" : "<%=memId %>"
-		, "memPass" : "<%=vo.getMemPass()%>" <!-- 변수선언 없이 바로 사용 가능 -->
+		, "memPass" : "<%=vo.getMemPass()%>"
 		, "memBir" : "<%=vo.getMemBir() %>"
 		, "memHp" : "<%=vo.getMemHp() %>"
 		, "memMail" : "<%=vo.getMemMail() %>"
@@ -30,4 +31,4 @@ for(int i=0; i<list.size(); i++){
 	<%
 }
 %>
-
+]

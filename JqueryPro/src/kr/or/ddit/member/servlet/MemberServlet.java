@@ -35,7 +35,7 @@ public class MemberServlet extends HttpServlet {
 
 				// 브라우저로 전달할 결과를 request에 attribute로 세팅
 				req.setAttribute("list", list);
-				RequestDispatcher disp = req.getRequestDispatcher("/html/member/memberListResult.jsp");
+				RequestDispatcher disp = req.getRequestDispatcher("/html/subject/member/memberListResult.jsp");
 				disp.forward(req, resp);
 
 			} else if ("C".equals(flag)) { // 등록
@@ -47,15 +47,30 @@ public class MemberServlet extends HttpServlet {
 			} else if ("D".equals(flag)) { // 삭제
 
 			} else if ("CHKID".equals(flag)) { // 신규 회원 등록
-				checkMemberId();
+				MemberVO memberVO = checkMemberId(req);
+				
+				int resultCnt = 0;
+				if(memberVO != null) {
+					resultCnt = 1;
+				}
+				
+				req.setAttribute("resultCnt", resultCnt);
+				RequestDispatcher disp = req.getRequestDispatcher("/html/common/checkResult.jsp");
+				disp.forward(req, resp);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void checkMemberId(HttpServlet req) {
-		String memId = req.getpara
+	private MemberVO checkMemberId(HttpServletRequest req) throws SQLException {
+		String memId = req.getParameter("memId");
+		
+		MemberService service = new MemberService();
+		
+		MemberVO memberVO = service.retrieveMember("memId");
+		
+		return memberVO;
 	}
 
 	private void createMember(HttpServletRequest req) throws SQLException {

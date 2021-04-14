@@ -45,13 +45,20 @@
 		)
 	</insert>
 
-	<select id="retrieveMember" parameterClass="String">
-		SELECT *
-		FROM TB_MEMBER
-		WHERE MEM_ID = #memId#
-		<isNotEmpty property="memName">
-		AND MEM_NAME = #memName#
-		</isNotEmpty>
+	<select id="retrieveMember" parameterClass="String" resultClass="kr.or.ddit.member.vo.MemberVO">
+		SELECT MEM_ID                         memId             
+             , MEM_PASS                       memPass           
+             , MEM_NAME                       memName           
+             , to_char(MEM_BIR, 'yyyy-mm-dd') memBir            
+             ,MEM_ZIP                        memZip            
+             ,MEM_ADD1                       memAdd1           
+             ,MEM_ADD2                       memAdd2           
+             ,MEM_HP                         memHp             
+             ,MEM_MAIL                       memMail           
+             ,RECV_EMAIL_YN                  recvEmailYn      
+             ,MEM_JOB                        memJob
+        FROM TB_MEMBER
+        WHERe MEM_ID = #memId#
 	</select>
 	
 	<select id="retrieveMemberList" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">
@@ -79,11 +86,12 @@
          AND B.GROUP_CODE(+) = 'A02'
          AND A.MEM_JOB = B.CODE(+)
          <isNotEmpty property="memId">
-         AND MEM_ID LIKE '%'||#memId||'%'
+         AND MEM_ID LIKE '%' || #memId# || '%'
          </isNotEmpty>
-         <isNotEmpty property="memName" prepend="AND"> <!-- 쿼리 앞에 -->
+         <isNotEmpty property="memName" prepend="AND">
          MEM_NAME = #memName#
          </isNotEmpty>
 	</select>
+
 	
 </sqlMap>
