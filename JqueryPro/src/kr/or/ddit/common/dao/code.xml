@@ -7,21 +7,20 @@
 
 	<select id="retrieveCodeList" parameterClass="kr.or.ddit.common.vo.CodeVO" resultClass="kr.or.ddit.common.vo.CodeVO">
 		select 
-			group_code    	groupCode        
+			group_code    		groupCode        
 			, group_code_name	groupCodeName      
 			, code            	code    
 			, code_name      	CodeName        
 			, description    	description        
 			, use_yn            useYn
-		from TB_CODE
+		from tb_code
 		where 1=1
 			<isNotEmpty property="groupCode">
-				and Group_code = #groupCode#
+				and group_code = #groupCode#
 			</isNotEmpty>
-			<isNotEmpty property="Code">
-				and Group_code = #groupCode#
+			<isNotEmpty property="code">
+				and code = #code#
 			</isNotEmpty>
-		and group_code = #group_code#
 	</select>
 	
 </sqlMap>

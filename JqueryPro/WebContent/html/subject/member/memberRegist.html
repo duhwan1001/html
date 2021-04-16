@@ -4,89 +4,10 @@
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-		<script src="/JqueryPro/js/common/myUtils.js"></script>
+		<script src="/JqueryPro/js/common/dditUtils.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<script>
-			function makeJobSelect(data){
-				/* // 방법1
-				var strHtml = "";
-				$("#job").html(strHtml); */
-				
-				// 방법2
-				/* $("#job").empty();
-				$("#job").append(ele1);
-				$("#job").append(ele2); */
-				
-				var strHtml = "";
-				for(var i=0; i<data.length; i++){
-					strHtml += "<option value=" + data[i].value + ">" + data[i].name + "</option>"
-					//<option value="07">군인</option>
-				}
-				//
-				$("#job").html(strHtml);
-				
-			}
-		
-			$(document).ready(function(){
-				// 직업코드 조회해서 세팅하기
-				$.ajax({
-					url : "/JqueryPro/CodeServlet"
-					,type : "post"
-					,data : {"groupCode" : "A02"} // 직업코드 조회
-					,dataType : "json"
-					,success : function(data){
-						console.log(data);
-						makeJobSelect(data);
-					}
-					,error : function(xhr){
-						console.log(xhr);
-						console.log(xhr.responseText);
-						console.log(xhr.status);
-						alert("에러");
-					}
-				})
-			});
-		
-			function checkId(){
-				var memId = $("#memId").val();
-				//
-				if(isEmpty(memId)){
-					alert("ID 값이 입력되지 않았습니다.");
-					$("#memId").focus();
-					$("#spMemId").show();
-					return;
-				}
-				
-				// 유효성 검사 - 영어소문자와 숫자로 구성. 3글자 이상 10글자 이하
-				var regExp = /^[a-z0-9{3,10}]$/;
-				if(regExp.test(memId)){
-					alert("ID 값이 유효하지 않습니다.");
-					$("#memId").focus();
-					return;
-				}
-				
-				// DB에서 중복검사 수행
-				$.ajax({
-					url : "/JqueryPro/MemberServlet"
-					,type : "post"
-					,data : {"memId" : memId, "flag" : "CHKID"}
-					,dataType : "json"
-					,success : function(data){
-						console.log(data);
-						
-					}
-					,error : function(xhr){
-						console.error(xhr);
-						console.error(xhr.status);
-						alert("ID 중복 검사 중 오류가 발생했습니다.");
-					}
-				})
-				
-				
-			}
-		</script>
 	</head>
 	<body>
 	
@@ -102,29 +23,17 @@
 		          <h4 class="modal-title">주소 검색</h4>
 		        </div>
 		        <div class="modal-body">
-		          	시: <select>
+		          	시: 
+		          	<select id="city" onchange="setGu()">
 		          		<option selected="selected">선택하세요</option>
-		          		<option>대전</option>
-		          		<option>대구</option>
-		          		<option>서울</option>
-		          		<option>부산</option>
-		          		<option>인천</option>
 		          	</select>
 		          	
-		          	구:<select>
-		          		<option selected="selected">선택하세요</option>
-		          		<option>서구</option>
-		          		<option>중구</option>
-		          		<option>서구</option>
-		          		<option>유성구</option>
+		          	구:<select id="gu" onchange="setDong()" disabled="disabled"> 
+						<option selected="selected">선택하세요</option>	
 		          	</select>
 		          	
-		          	동:<select>
-		          		<option selected="selected">선택하세요</option>
-		          		<option>관저동</option>
-		          		<option>대흥동</option>
-		          		<option>중촌동</option>
-		          		<option>산성동</option>
+		          	동:<select id="dong" disabled="disabled">
+						<option selected="selected">선택하세요</option>
 		          	</select>
 		          	<button type="button" id="btnSearch">검색</button>
 		        </div>
@@ -138,7 +47,7 @@
 	
 		<div class="container">
 		  <h2>회원가입 페이지</h2>
-		  <form class="form-horizontal" action="/action_page.php">
+		  <form class="form-horizontal" id="fm">
   		    <div class="form-group">
 		      <label class="control-label col-sm-2" for="memId">ID:</label>
 		      <div class="col-sm-6">          
@@ -198,7 +107,8 @@
 		    <div class="form-group">
 		      <label class="control-label col-sm-2" for="email">이메일 수신 동의:</label>
 		      <div class="col-sm-10">
-		        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+		        <label class="radio-inline"><input type="radio" name="recvEmailYnN" id="recvEmailYes">수신</label>
+				<label class="radio-inline"><input type="radio" name="recvEmailYnN" id="recvEmailNo">미수신</label>
 		      </div>
 		    </div>
 		    <div class="form-group">
@@ -214,19 +124,25 @@
    		    <div class="form-group">
 		      <label class="control-label col-sm-2" for="LIKE">LIKE:</label>
 		      <div class="col-sm-10">          
-		        <input type="text" class="form-control" id="LIKE" placeholder="Enter LIKE" name="LIKE">
+			    <label class="checkbox-inline">
+			      <input type="checkbox" value="">Option 1
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" value="">Option 2
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" value="">Option 3
+			    </label>
 		      </div>
 		    </div>
    		    <div class="form-group">
 		      <label class="control-label col-sm-2" for="LIKE">Memorial Type:</label>
 		      <div class="col-sm-10">
 		      	종류:          
-		        <select>
-		        	<option>결혼기념일</option>
-		        	<option>결혼기념일</option>
-		        	<option>결혼기념일</option>
-		        	<option>결혼기념일</option>
-		        	<option>결혼기념일</option>
+		        <select id="MemorialDateSel">
+		        	<option value="1">결혼기념일</option>
+		        	<option value="2">생일</option>
+		        	<option value="3">등등</option>
 		        </select>
 		        날짜:
 		        <input type="text" id="MemorialDate" name="MemorialDate">	
@@ -247,7 +163,8 @@
 		    </div>
 		    <div class="form-group">        
 		      <div class="col-sm-offset-2 col-sm-10">
-		        <button type="submit" class="btn btn-default">Submit</button>
+		        <button type="button" class="btn btn-default" onclick="save()">저장</button>
+		        <button type="submit" class="btn btn-default">취소</button>
 		      </div>
 		    </div>
 		  </form>
