@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script src="/memberPj/js/registerForm.js"></script>
+		<style>
+			body {
+			  font-family: Arial, Helvetica, sans-serif;
+			  background-color: black;
+			}
+			
+			* {
+			  box-sizing: border-box;
+			}
+			
+			/* Add padding to containers */
+			.container {
+			  padding: 16px;
+			  background-color: white;
+			}
+			
+			/* Full-width input fields */
+			input {
+			  width: 100%;
+			  padding: 15px;
+			  margin: 5px 0 22px 0;
+			  display: inline-block;
+			  border: none;
+			  background: #f1f1f1;
+			}
+			
+			input:focus {
+			  background-color: #ddd;
+			  outline: none;
+			}
+			
+			/* Overwrite default styles of hr */
+			hr {
+			  border: 1px solid #f1f1f1;
+			  margin-bottom: 25px;
+			}
+			
+			/* Set a style for the submit button */
+			.registerbtn {
+			  background-color: #4CAF50;
+			  color: white;
+			  padding: 16px 20px;
+			  margin: 8px 0;
+			  border: none;
+			  cursor: pointer;
+			  width: 100%;
+			  opacity: 0.9;
+			}
+			
+			.registerbtn:hover {
+			  opacity: 1;
+			}
+			
+			/* Add a blue text color to links */
+			a {
+			  color: dodgerblue;
+			}
+			
+			/* Set a grey background color and center the text of the "sign in" section */
+			.signin {
+			  background-color: #f1f1f1;
+			  text-align: center;
+			}
+			
+			button {
+				border-radius: 5px;
+			}
+			
+		</style>
+	</head>
+	<body>
+
+		  <!-- Modal -->
+		  <div class="modal fade" id="myModal" role="dialog">
+		    <div class="modal-dialog">
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title">주소 검색</h4>
+		        </div>
+		        <div class="modal-body">
+					<input type="text" id="searchDong" name="dong">
+		          	<button type="button" id="btnSearch" onclick="searchZipCode()">검색</button>
+					<div id="divZipResult">
+						<table class="table table-striped" id="tbZipResult">
+						  <thead>
+						    <tr>
+						      <th>우편번호</th>
+						      <th>주소</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						  </tbody>
+						</table>
+					</div>
+		        </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+	
+		<!-- 본문 -->
+		<form action="/action_page.php">
+		  <div class="container">
+		    <label for="memId"><b>아이디:</b></label>
+		    <button type="button" onclick="">중복검사</button>
+		    <input type="text" placeholder="아이디를 입력하세요." name="memId" id="memId" required>
+		
+		    <label for="memName"><b>이름:</b></label>
+		    <input type="text" placeholder="이름을 입력하세요" name="memName" id="memName" required>
+		     
+		    <label for="memBir"><b>생년월일:</b></label>
+		    <input type="date" placeholder="생년월일 입력" name="memBir" id="memPw" required>
+		    
+		    <label for="memPw"><b>비밀번호:</b></label>
+		    <input type="password" placeholder="비밀번호를 입력하세요" name="memPw" id="memPw" required>
+		    
+		    <label for="memHp"><b>휴대폰 번호:</b></label>
+		    <input type="number" placeholder="010-1234-5678" name="memHp" id="memHp" required>
+		    
+		    <label for="memEmail"><b>이메일:</b></label>
+		    <input type="email" placeholder="abcd123@email.com" name="memEmail" id="memEmail" required>
+		    
+		    <label for="zipcode"><b>우편번호:</b></label>
+		    <button type="button"data-toggle="modal" data-target="#myModal">번호검색</button>
+		    <input type="text" name="zipcode" id="zipcode" required>
+		    
+		    <label for="memAdd1"><b>주소:</b></label>
+		    <input type="text" name="memAdd1" id="memAdd1" required>
+		    
+		   	<label for="memAdd2"><b>상세주소:</b></label>
+		    <input type="text" name="memAdd2" id="memAdd2" required>
+		    <button type="submit" class="registerbtn">Register</button>
+		  </div>
+		</form>
+
+	
+</body>
+</html>

@@ -4,94 +4,95 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="member">
-
 	<insert id="createMember" parameterClass="kr.or.ddit.member.vo.MemberVO">
 		INSERT INTO TB_MEMBER (
 			MEM_ID
-			,MEM_PASS
-			,MEM_NAME
-			,to_char(MEM_BIR, 'yyyy-mm-dd')
-			,MEM_ZIP
-			,MEM_ADD1
-			,MEM_ADD2
-			,MEM_HP
-			,MEM_MAIL
-			,RECV_EMAIL_YN
-			,MEM_JOB
-			,MEM_LIKE
-			,MEM_MEMORIAL_TYPE
-			,MEM_MEMORIAL_DATE
-			,MEM_MILEAGE
-			,MEM_COMMENT
-			,MEM_DELETE
+			, MEM_PASS
+			, MEM_NAME
+			, MEM_BIR
+			, MEM_ZIP
+			, MEM_ADD1
+			, MEM_ADD2
+			, MEM_HP
+			, MEM_MAIL
+			, RECV_EMAIL_YN
+			, MEM_JOB
+			, MEM_LIKE
+			, MEM_MEMORIAL_TYPE
+			, MEM_MEMORIAL_DATE
+			, MEM_MILEAGE
+			, MEM_COMMENT
+			, MEM_DELETE
 		) VALUES (
-			 #memId#
-			,#memPass#
-			,#memName#
-			,#memBir#
-			,#memZip#
-			,#memAdd1#
-			,#memAdd2#
-			,#memHp#
-			,#memMail#
-			,#recvEmailYn#
-			,#memJob#
-			,#memLike#
-			,#memMemorialType#
-			,#memMemorialDate#
-			,#memMileage#
-			,#memComment#
-			,#memDelete#
+			  #memId#
+			, #memPass#
+			, #memName#
+			, #memBir#
+			, #memZip#
+			, #memAdd1#
+			, #memAdd2#
+			, #memHp#
+			, #memMail#
+			, #recvEmailYn#
+			, #memJob#
+			, #memLike#
+			, #memMemorialType#
+			, #memMemorialDate#
+			, #memMileage#
+			, #memComment#
+			, 'N'
 		)
 	</insert>
-
-	<select id="retrieveMember" parameterClass="String" resultClass="kr.or.ddit.member.vo.MemberVO">
-		SELECT MEM_ID                         memId             
-             , MEM_PASS                       memPass           
-             , MEM_NAME                       memName           
-             , to_char(MEM_BIR, 'yyyy-mm-dd') memBir            
-             ,MEM_ZIP                        memZip            
-             ,MEM_ADD1                       memAdd1           
-             ,MEM_ADD2                       memAdd2           
-             ,MEM_HP                         memHp             
-             ,MEM_MAIL                       memMail           
-             ,RECV_EMAIL_YN                  recvEmailYn      
-             ,MEM_JOB                        memJob
-        FROM TB_MEMBER
-        WHERe MEM_ID = #memId#
+	<update id="updateMember"></update>
+	
+	<select id="retrieveMember" parameterClass="String"
+	resultClass="kr.or.ddit.member.vo.MemberVO">
+		SELECT MEM_ID                memId             
+             , MEM_PASS              memPass           
+             , MEM_NAME              memName           
+             , TO_CHAR(MEM_BIR, 'yyyy-mm-dd')	memBir            
+             , MEM_ZIP               memZip            
+             , MEM_ADD1              memAdd1           
+             , MEM_ADD2              memAdd2           
+             , MEM_HP                memHp             
+             , MEM_MAIL              memMail           
+             , RECV_EMAIL_YN         recvEmailYn      
+             , MEM_JOB               memJob      
+		FROM TB_MEMBER
+		WHERE MEM_ID = #memId#
 	</select>
 	
+	
 	<select id="retrieveMemberList" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">
-		SELECT A.MEM_ID                         memId             
-             , A.MEM_PASS                       memPass           
-             , A.MEM_NAME                       memName           
-             , to_char(A.MEM_BIR, 'yyyy-mm-dd') memBir            
-             , A.MEM_ZIP                        memZip            
-             , A.MEM_ADD1                       memAdd1           
-             , A.MEM_ADD2                       memAdd2           
-             , A.MEM_HP                         memHp             
-             , A.MEM_MAIL                       memMail           
-             , A.RECV_EMAIL_YN                  recvEmailYn      
-             , A.MEM_JOB                        memJob
-             , B.CODE_NAME			            memjobName            
-             , A.MEM_LIKE                       memLike           
-             , A.MEM_MEMORIAL_TYPE              memMemorialType  
-             , A.MEM_MEMORIAL_DATE              memMemorialDate  
-             , NVL(A.MEM_MILEAGE, 0)            memMileage        
-             , A.MEM_COMMENT                    memComment        
-             , A.MEM_DELETE                     memDelete         
+		SELECT A.MEM_ID                memId             
+             , A.MEM_PASS              memPass           
+             , A.MEM_NAME              memName           
+             , TO_CHAR(MEM_BIR, 'yyyy-mm-dd')	memBir            
+             , A.MEM_ZIP               memZip            
+             , A.MEM_ADD1              memAdd1           
+             , A.MEM_ADD2              memAdd2           
+             , A.MEM_HP                memHp             
+             , A.MEM_MAIL              memMail           
+             , A.RECV_EMAIL_YN         recvEmailYn      
+             , A.MEM_JOB               memJob            
+             , B.CODE_NAME			   memjobName
+             , A.MEM_LIKE              memLike           
+             , A.MEM_MEMORIAL_TYPE     memMemorialType  
+             , A.MEM_MEMORIAL_DATE     memMemorialDate  
+             , NVL(MEM_MILEAGE, 0)     memMileage        
+             , A.MEM_COMMENT           memComment        
+             , A.MEM_DELETE            memDelete         
           FROM TB_MEMBER A
-          	 , TB_CODE B
+              ,TB_CODE B
          WHERE 1=1
-         AND B.GROUP_CODE(+) = 'A02'
-         AND A.MEM_JOB = B.CODE(+)
+           AND B.GROUP_CODE(+) = 'A02'
+           AND A.MEM_JOB = B.CODE(+)
          <isNotEmpty property="memId">
-         AND MEM_ID LIKE '%' || #memId# || '%'
+         AND MEM_ID LIKE '%'||#memId#||'%'
          </isNotEmpty>
          <isNotEmpty property="memName" prepend="AND">
          MEM_NAME = #memName#
          </isNotEmpty>
 	</select>
-
 	
 </sqlMap>
